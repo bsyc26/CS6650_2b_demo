@@ -1,0 +1,16 @@
+{
+  "taskArn": "arn:aws:ecs:us-east-1:108084419214:task/cs6650-hw5-product-cluster/9c97f7b762514c57b61731da2b0af9a7",
+  "lastStatus": "RUNNING",
+  "cpu": "256",
+  "memory": "512",
+  "launchType": "FARGATE",
+  "platformVersion": "1.4.0",
+  "containers": [
+    {
+      "name": "cs6650-hw5-product-container",
+      "lastStatus": "RUNNING",
+      "image": "108084419214.dkr.ecr.us-east-1.amazonaws.com/cs6650-hw5-product@sha256:effab76693b894411a3b6c91386be47d5a4a5fe95b0075297de0612a18319b12",
+      "imageDigest": "sha256:effab76693b894411a3b6c91386be47d5a4a5fe95b0075297de0612a18319b12"
+    }
+  ]
+}

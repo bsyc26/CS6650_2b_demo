@@ -60,3 +60,9 @@ variable "memory" {
   default     = "512"
   description = "Memory (MiB)"
 }
+
+variable "product_api_key" {
+  type        = string
+  sensitive   = true
+  description = "Application credential injected at runtime, never baked into the image."
+}

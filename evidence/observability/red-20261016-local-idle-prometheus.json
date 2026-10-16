@@ -1,0 +1,978 @@
+{
+  "panel_1_A": {
+    "title": "Rate \u00b7 all Product requests",
+    "expr": "sum(rate(product_http_requests_total{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s]))",
+    "instant": {
+      "resultType": "vector",
+      "result": [
+        {
+          "metric": {},
+          "value": [
+            1792178703.837,
+            "0"
+          ]
+        }
+      ]
+    },
+    "range": {
+      "resultType": "matrix",
+      "result": [
+        {
+          "metric": {},
+          "values": [
+            [
+              1792178638.832,
+              "0"
+            ],
+            [
+              1792178643.832,
+              "0"
+            ],
+            [
+              1792178648.832,
+              "0"
+            ],
+            [
+              1792178653.832,
+              "0"
+            ],
+            [
+              1792178658.832,
+              "0"
+            ],
+            [
+              1792178663.832,
+              "0"
+            ],
+            [
+              1792178668.832,
+              "0"
+            ],
+            [
+              1792178673.832,
+              "0"
+            ],
+            [
+              1792178678.832,
+              "0"
+            ],
+            [
+              1792178683.832,
+              "0"
+            ],
+            [
+              1792178688.832,
+              "0"
+            ],
+            [
+              1792178693.832,
+              "0"
+            ],
+            [
+              1792178698.832,
+              "0"
+            ],
+            [
+              1792178703.832,
+              "0"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "panel_2_A": {
+    "title": "Errors \u00b7 non-2xx",
+    "expr": "100 * sum(rate(product_http_errors_total{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s])) / clamp_min(sum(rate(product_http_requests_total{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s])), 1e-9)",
+    "instant": {
+      "resultType": "vector",
+      "result": [
+        {
+          "metric": {},
+          "value": [
+            1792178703.837,
+            "0"
+          ]
+        }
+      ]
+    },
+    "range": {
+      "resultType": "matrix",
+      "result": [
+        {
+          "metric": {},
+          "values": [
+            [
+              1792178638.832,
+              "0"
+            ],
+            [
+              1792178643.832,
+              "0"
+            ],
+            [
+              1792178648.832,
+              "0"
+            ],
+            [
+              1792178653.832,
+              "0"
+            ],
+            [
+              1792178658.832,
+              "0"
+            ],
+            [
+              1792178663.832,
+              "0"
+            ],
+            [
+              1792178668.832,
+              "0"
+            ],
+            [
+              1792178673.832,
+              "0"
+            ],
+            [
+              1792178678.832,
+              "0"
+            ],
+            [
+              1792178683.832,
+              "0"
+            ],
+            [
+              1792178688.832,
+              "0"
+            ],
+            [
+              1792178693.832,
+              "0"
+            ],
+            [
+              1792178698.832,
+              "0"
+            ],
+            [
+              1792178703.832,
+              "0"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "panel_3_A": {
+    "title": "Duration \u00b7 p50",
+    "expr": "histogram_quantile(0.5, sum by (le) (rate(product_http_request_duration_seconds_bucket{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s]))) * 1000",
+    "instant": {
+      "resultType": "vector",
+      "result": [
+        {
+          "metric": {},
+          "value": [
+            1792178703.837,
+            "NaN"
+          ]
+        }
+      ]
+    },
+    "range": {
+      "resultType": "matrix",
+      "result": [
+        {
+          "metric": {},
+          "values": [
+            [
+              1792178638.832,
+              "NaN"
+            ],
+            [
+              1792178643.832,
+              "NaN"
+            ],
+            [
+              1792178648.832,
+              "NaN"
+            ],
+            [
+              1792178653.832,
+              "NaN"
+            ],
+            [
+              1792178658.832,
+              "NaN"
+            ],
+            [
+              1792178663.832,
+              "NaN"
+            ],
+            [
+              1792178668.832,
+              "NaN"
+            ],
+            [
+              1792178673.832,
+              "NaN"
+            ],
+            [
+              1792178678.832,
+              "NaN"
+            ],
+            [
+              1792178683.832,
+              "NaN"
+            ],
+            [
+              1792178688.832,
+              "NaN"
+            ],
+            [
+              1792178693.832,
+              "NaN"
+            ],
+            [
+              1792178698.832,
+              "NaN"
+            ],
+            [
+              1792178703.832,
+              "NaN"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "panel_4_A": {
+    "title": "Duration \u00b7 p95",
+    "expr": "histogram_quantile(0.95, sum by (le) (rate(product_http_request_duration_seconds_bucket{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s]))) * 1000",
+    "instant": {
+      "resultType": "vector",
+      "result": [
+        {
+          "metric": {},
+          "value": [
+            1792178703.837,
+            "NaN"
+          ]
+        }
+      ]
+    },
+    "range": {
+      "resultType": "matrix",
+      "result": [
+        {
+          "metric": {},
+          "values": [
+            [
+              1792178638.832,
+              "NaN"
+            ],
+            [
+              1792178643.832,
+              "NaN"
+            ],
+            [
+              1792178648.832,
+              "NaN"
+            ],
+            [
+              1792178653.832,
+              "NaN"
+            ],
+            [
+              1792178658.832,
+              "NaN"
+            ],
+            [
+              1792178663.832,
+              "NaN"
+            ],
+            [
+              1792178668.832,
+              "NaN"
+            ],
+            [
+              1792178673.832,
+              "NaN"
+            ],
+            [
+              1792178678.832,
+              "NaN"
+            ],
+            [
+              1792178683.832,
+              "NaN"
+            ],
+            [
+              1792178688.832,
+              "NaN"
+            ],
+            [
+              1792178693.832,
+              "NaN"
+            ],
+            [
+              1792178698.832,
+              "NaN"
+            ],
+            [
+              1792178703.832,
+              "NaN"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "panel_5_A": {
+    "title": "R \u00b7 Request rate by endpoint",
+    "expr": "sum by (method, endpoint) (rate(product_http_requests_total{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s]))",
+    "instant": {
+      "resultType": "vector",
+      "result": [
+        {
+          "metric": {
+            "endpoint": "/v1/products/:productId",
+            "method": "GET"
+          },
+          "value": [
+            1792178703.837,
+            "0"
+          ]
+        },
+        {
+          "metric": {
+            "endpoint": "/v1/products/:productId/details",
+            "method": "POST"
+          },
+          "value": [
+            1792178703.837,
+            "0"
+          ]
+        }
+      ]
+    },
+    "range": {
+      "resultType": "matrix",
+      "result": [
+        {
+          "metric": {
+            "endpoint": "/v1/products/:productId",
+            "method": "GET"
+          },
+          "values": [
+            [
+              1792178638.832,
+              "0"
+            ],
+            [
+              1792178643.832,
+              "0"
+            ],
+            [
+              1792178648.832,
+              "0"
+            ],
+            [
+              1792178653.832,
+              "0"
+            ],
+            [
+              1792178658.832,
+              "0"
+            ],
+            [
+              1792178663.832,
+              "0"
+            ],
+            [
+              1792178668.832,
+              "0"
+            ],
+            [
+              1792178673.832,
+              "0"
+            ],
+            [
+              1792178678.832,
+              "0"
+            ],
+            [
+              1792178683.832,
+              "0"
+            ],
+            [
+              1792178688.832,
+              "0"
+            ],
+            [
+              1792178693.832,
+              "0"
+            ],
+            [
+              1792178698.832,
+              "0"
+            ],
+            [
+              1792178703.832,
+              "0"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "endpoint": "/v1/products/:productId/details",
+            "method": "POST"
+          },
+          "values": [
+            [
+              1792178638.832,
+              "0"
+            ],
+            [
+              1792178643.832,
+              "0"
+            ],
+            [
+              1792178648.832,
+              "0"
+            ],
+            [
+              1792178653.832,
+              "0"
+            ],
+            [
+              1792178658.832,
+              "0"
+            ],
+            [
+              1792178663.832,
+              "0"
+            ],
+            [
+              1792178668.832,
+              "0"
+            ],
+            [
+              1792178673.832,
+              "0"
+            ],
+            [
+              1792178678.832,
+              "0"
+            ],
+            [
+              1792178683.832,
+              "0"
+            ],
+            [
+              1792178688.832,
+              "0"
+            ],
+            [
+              1792178693.832,
+              "0"
+            ],
+            [
+              1792178698.832,
+              "0"
+            ],
+            [
+              1792178703.832,
+              "0"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "panel_6_A": {
+    "title": "E \u00b7 Non-2xx rate by endpoint",
+    "expr": "100 * sum by (method, endpoint) (rate(product_http_errors_total{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s])) / clamp_min(sum by (method, endpoint) (rate(product_http_requests_total{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s])), 1e-9)",
+    "instant": {
+      "resultType": "vector",
+      "result": [
+        {
+          "metric": {
+            "endpoint": "/v1/products/:productId",
+            "method": "GET"
+          },
+          "value": [
+            1792178703.837,
+            "0"
+          ]
+        },
+        {
+          "metric": {
+            "endpoint": "/v1/products/:productId/details",
+            "method": "POST"
+          },
+          "value": [
+            1792178703.837,
+            "0"
+          ]
+        }
+      ]
+    },
+    "range": {
+      "resultType": "matrix",
+      "result": [
+        {
+          "metric": {
+            "endpoint": "/v1/products/:productId",
+            "method": "GET"
+          },
+          "values": [
+            [
+              1792178638.832,
+              "0"
+            ],
+            [
+              1792178643.832,
+              "0"
+            ],
+            [
+              1792178648.832,
+              "0"
+            ],
+            [
+              1792178653.832,
+              "0"
+            ],
+            [
+              1792178658.832,
+              "0"
+            ],
+            [
+              1792178663.832,
+              "0"
+            ],
+            [
+              1792178668.832,
+              "0"
+            ],
+            [
+              1792178673.832,
+              "0"
+            ],
+            [
+              1792178678.832,
+              "0"
+            ],
+            [
+              1792178683.832,
+              "0"
+            ],
+            [
+              1792178688.832,
+              "0"
+            ],
+            [
+              1792178693.832,
+              "0"
+            ],
+            [
+              1792178698.832,
+              "0"
+            ],
+            [
+              1792178703.832,
+              "0"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "endpoint": "/v1/products/:productId/details",
+            "method": "POST"
+          },
+          "values": [
+            [
+              1792178638.832,
+              "0"
+            ],
+            [
+              1792178643.832,
+              "0"
+            ],
+            [
+              1792178648.832,
+              "0"
+            ],
+            [
+              1792178653.832,
+              "0"
+            ],
+            [
+              1792178658.832,
+              "0"
+            ],
+            [
+              1792178663.832,
+              "0"
+            ],
+            [
+              1792178668.832,
+              "0"
+            ],
+            [
+              1792178673.832,
+              "0"
+            ],
+            [
+              1792178678.832,
+              "0"
+            ],
+            [
+              1792178683.832,
+              "0"
+            ],
+            [
+              1792178688.832,
+              "0"
+            ],
+            [
+              1792178693.832,
+              "0"
+            ],
+            [
+              1792178698.832,
+              "0"
+            ],
+            [
+              1792178703.832,
+              "0"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "panel_7_A": {
+    "title": "D \u00b7 p50 / p95 by endpoint",
+    "expr": "histogram_quantile(0.5, sum by (le, method, endpoint) (rate(product_http_request_duration_seconds_bucket{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s]))) * 1000",
+    "instant": {
+      "resultType": "vector",
+      "result": [
+        {
+          "metric": {
+            "endpoint": "/v1/products/:productId",
+            "method": "GET"
+          },
+          "value": [
+            1792178703.837,
+            "NaN"
+          ]
+        },
+        {
+          "metric": {
+            "endpoint": "/v1/products/:productId/details",
+            "method": "POST"
+          },
+          "value": [
+            1792178703.837,
+            "NaN"
+          ]
+        }
+      ]
+    },
+    "range": {
+      "resultType": "matrix",
+      "result": [
+        {
+          "metric": {
+            "endpoint": "/v1/products/:productId",
+            "method": "GET"
+          },
+          "values": [
+            [
+              1792178638.832,
+              "NaN"
+            ],
+            [
+              1792178643.832,
+              "NaN"
+            ],
+            [
+              1792178648.832,
+              "NaN"
+            ],
+            [
+              1792178653.832,
+              "NaN"
+            ],
+            [
+              1792178658.832,
+              "NaN"
+            ],
+            [
+              1792178663.832,
+              "NaN"
+            ],
+            [
+              1792178668.832,
+              "NaN"
+            ],
+            [
+              1792178673.832,
+              "NaN"
+            ],
+            [
+              1792178678.832,
+              "NaN"
+            ],
+            [
+              1792178683.832,
+              "NaN"
+            ],
+            [
+              1792178688.832,
+              "NaN"
+            ],
+            [
+              1792178693.832,
+              "NaN"
+            ],
+            [
+              1792178698.832,
+              "NaN"
+            ],
+            [
+              1792178703.832,
+              "NaN"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "endpoint": "/v1/products/:productId/details",
+            "method": "POST"
+          },
+          "values": [
+            [
+              1792178638.832,
+              "NaN"
+            ],
+            [
+              1792178643.832,
+              "NaN"
+            ],
+            [
+              1792178648.832,
+              "NaN"
+            ],
+            [
+              1792178653.832,
+              "NaN"
+            ],
+            [
+              1792178658.832,
+              "NaN"
+            ],
+            [
+              1792178663.832,
+              "NaN"
+            ],
+            [
+              1792178668.832,
+              "NaN"
+            ],
+            [
+              1792178673.832,
+              "NaN"
+            ],
+            [
+              1792178678.832,
+              "NaN"
+            ],
+            [
+              1792178683.832,
+              "NaN"
+            ],
+            [
+              1792178688.832,
+              "NaN"
+            ],
+            [
+              1792178693.832,
+              "NaN"
+            ],
+            [
+              1792178698.832,
+              "NaN"
+            ],
+            [
+              1792178703.832,
+              "NaN"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "panel_7_B": {
+    "title": "D \u00b7 p50 / p95 by endpoint",
+    "expr": "histogram_quantile(0.95, sum by (le, method, endpoint) (rate(product_http_request_duration_seconds_bucket{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s]))) * 1000",
+    "instant": {
+      "resultType": "vector",
+      "result": [
+        {
+          "metric": {
+            "endpoint": "/v1/products/:productId",
+            "method": "GET"
+          },
+          "value": [
+            1792178703.837,
+            "NaN"
+          ]
+        },
+        {
+          "metric": {
+            "endpoint": "/v1/products/:productId/details",
+            "method": "POST"
+          },
+          "value": [
+            1792178703.837,
+            "NaN"
+          ]
+        }
+      ]
+    },
+    "range": {
+      "resultType": "matrix",
+      "result": [
+        {
+          "metric": {
+            "endpoint": "/v1/products/:productId",
+            "method": "GET"
+          },
+          "values": [
+            [
+              1792178638.832,
+              "NaN"
+            ],
+            [
+              1792178643.832,
+              "NaN"
+            ],
+            [
+              1792178648.832,
+              "NaN"
+            ],
+            [
+              1792178653.832,
+              "NaN"
+            ],
+            [
+              1792178658.832,
+              "NaN"
+            ],
+            [
+              1792178663.832,
+              "NaN"
+            ],
+            [
+              1792178668.832,
+              "NaN"
+            ],
+            [
+              1792178673.832,
+              "NaN"
+            ],
+            [
+              1792178678.832,
+              "NaN"
+            ],
+            [
+              1792178683.832,
+              "NaN"
+            ],
+            [
+              1792178688.832,
+              "NaN"
+            ],
+            [
+              1792178693.832,
+              "NaN"
+            ],
+            [
+              1792178698.832,
+              "NaN"
+            ],
+            [
+              1792178703.832,
+              "NaN"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "endpoint": "/v1/products/:productId/details",
+            "method": "POST"
+          },
+          "values": [
+            [
+              1792178638.832,
+              "NaN"
+            ],
+            [
+              1792178643.832,
+              "NaN"
+            ],
+            [
+              1792178648.832,
+              "NaN"
+            ],
+            [
+              1792178653.832,
+              "NaN"
+            ],
+            [
+              1792178658.832,
+              "NaN"
+            ],
+            [
+              1792178663.832,
+              "NaN"
+            ],
+            [
+              1792178668.832,
+              "NaN"
+            ],
+            [
+              1792178673.832,
+              "NaN"
+            ],
+            [
+              1792178678.832,
+              "NaN"
+            ],
+            [
+              1792178683.832,
+              "NaN"
+            ],
+            [
+              1792178688.832,
+              "NaN"
+            ],
+            [
+              1792178693.832,
+              "NaN"
+            ],
+            [
+              1792178698.832,
+              "NaN"
+            ],
+            [
+              1792178703.832,
+              "NaN"
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}

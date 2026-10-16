@@ -1,0 +1,9 @@
+tests/deployment.tftest.hcl... in progress
+  run "product_deployment_defaults"... pass
+  run "reject_independent_memory_replicas"... pass
+  run "reject_invalid_fargate_resource_pair"... pass
+  run "reject_public_demo_credential"... pass
+tests/deployment.tftest.hcl... tearing down
+tests/deployment.tftest.hcl... pass
+
+Success! 4 passed, 0 failed.

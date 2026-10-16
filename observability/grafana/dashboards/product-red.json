@@ -1,0 +1,628 @@
+{
+  "uid": "hw5-product-red",
+  "title": "HW5 Product API \u00b7 RED",
+  "description": "Local Prometheus/Grafana RED demonstration with per-endpoint rate, errors and histogram duration.",
+  "tags": [
+    "hw5",
+    "product",
+    "red"
+  ],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "editable": false,
+  "refresh": "5s",
+  "time": {
+    "from": "now-10m",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s"
+    ]
+  },
+  "annotations": {
+    "list": []
+  },
+  "panels": [
+    {
+      "id": 9,
+      "title": "Evidence phase \u00b7 ${phase}",
+      "type": "text",
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 24,
+        "h": 2
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "**${phase}** \u00b7 Real local Product API metrics \u00b7 GET/POST \u00b7 5-second scrape \u00b7 fixed evidence time window"
+      }
+    },
+    {
+      "id": 1,
+      "title": "Rate \u00b7 all Product requests",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hw5-prometheus"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 2,
+        "w": 6,
+        "h": 4
+      },
+      "description": "Completed Product requests per second over 20 seconds. /metrics and /health are excluded from these panels.",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hw5-prometheus"
+          },
+          "expr": "sum(rate(product_http_requests_total{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s]))",
+          "legendFormat": "Rate \u00b7 all Product requests",
+          "refId": "A",
+          "range": false,
+          "instant": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps",
+          "decimals": 2,
+          "min": 0,
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 12,
+            "showPoints": "never",
+            "spanNulls": false
+          },
+          "noValue": "No traffic",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "mappings": [
+            {
+              "type": "special",
+              "options": {
+                "match": "nan",
+                "result": {
+                  "text": "No traffic"
+                }
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "value",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      }
+    },
+    {
+      "id": 2,
+      "title": "Errors \u00b7 non-2xx",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hw5-prometheus"
+      },
+      "gridPos": {
+        "x": 6,
+        "y": 2,
+        "w": 6,
+        "h": 4
+      },
+      "description": "All non-2xx / all Product requests, including expected 400/404 demonstration cases. Idle ratio is shown as 0%.",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hw5-prometheus"
+          },
+          "expr": "100 * sum(rate(product_http_errors_total{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s])) / clamp_min(sum(rate(product_http_requests_total{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s])), 1e-9)",
+          "legendFormat": "Errors \u00b7 non-2xx",
+          "refId": "A",
+          "range": false,
+          "instant": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "decimals": 2,
+          "min": 0,
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 12,
+            "showPoints": "never",
+            "spanNulls": false
+          },
+          "noValue": "No traffic",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 5
+              }
+            ]
+          },
+          "mappings": [
+            {
+              "type": "special",
+              "options": {
+                "match": "nan",
+                "result": {
+                  "text": "No traffic"
+                }
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "value",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      }
+    },
+    {
+      "id": 3,
+      "title": "Duration \u00b7 p50",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hw5-prometheus"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 2,
+        "w": 6,
+        "h": 4
+      },
+      "description": "Estimated server middleware latency. No observations means no percentile; this is expected while idle.",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hw5-prometheus"
+          },
+          "expr": "histogram_quantile(0.5, sum by (le) (rate(product_http_request_duration_seconds_bucket{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s]))) * 1000",
+          "legendFormat": "Duration \u00b7 p50",
+          "refId": "A",
+          "range": false,
+          "instant": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ms",
+          "decimals": 2,
+          "min": 0,
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 12,
+            "showPoints": "never",
+            "spanNulls": false
+          },
+          "noValue": "No traffic",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "mappings": [
+            {
+              "type": "special",
+              "options": {
+                "match": "nan",
+                "result": {
+                  "text": "No traffic"
+                }
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "value",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      }
+    },
+    {
+      "id": 4,
+      "title": "Duration \u00b7 p95",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hw5-prometheus"
+      },
+      "gridPos": {
+        "x": 18,
+        "y": 2,
+        "w": 6,
+        "h": 4
+      },
+      "description": "Estimated histogram percentile, not an exact sample quantile or end-to-end Locust latency.",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hw5-prometheus"
+          },
+          "expr": "histogram_quantile(0.95, sum by (le) (rate(product_http_request_duration_seconds_bucket{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s]))) * 1000",
+          "legendFormat": "Duration \u00b7 p95",
+          "refId": "A",
+          "range": false,
+          "instant": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ms",
+          "decimals": 2,
+          "min": 0,
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 12,
+            "showPoints": "never",
+            "spanNulls": false
+          },
+          "noValue": "No traffic",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "mappings": [
+            {
+              "type": "special",
+              "options": {
+                "match": "nan",
+                "result": {
+                  "text": "No traffic"
+                }
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "value",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      }
+    },
+    {
+      "id": 5,
+      "title": "R \u00b7 Request rate by endpoint",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hw5-prometheus"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 6,
+        "w": 8,
+        "h": 10
+      },
+      "description": "GET and POST are separate series; route templates prevent per-product-ID cardinality.",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hw5-prometheus"
+          },
+          "expr": "sum by (method, endpoint) (rate(product_http_requests_total{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s]))",
+          "legendFormat": "{{method}} {{endpoint}}",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps",
+          "decimals": 2,
+          "min": 0,
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 12,
+            "showPoints": "never",
+            "spanNulls": false
+          },
+          "noValue": "No traffic",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "title": "E \u00b7 Non-2xx rate by endpoint",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hw5-prometheus"
+      },
+      "gridPos": {
+        "x": 8,
+        "y": 6,
+        "w": 8,
+        "h": 10
+      },
+      "description": "Expected request mix: 80% GET 200, 18% POST 204, 1% GET 404, 1% POST 400. Error share differs per endpoint.",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hw5-prometheus"
+          },
+          "expr": "100 * sum by (method, endpoint) (rate(product_http_errors_total{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s])) / clamp_min(sum by (method, endpoint) (rate(product_http_requests_total{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s])), 1e-9)",
+          "legendFormat": "{{method}} {{endpoint}}",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "decimals": 2,
+          "min": 0,
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 12,
+            "showPoints": "never",
+            "spanNulls": false
+          },
+          "noValue": "No traffic",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "title": "D \u00b7 p50 / p95 by endpoint",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hw5-prometheus"
+      },
+      "gridPos": {
+        "x": 16,
+        "y": 6,
+        "w": 8,
+        "h": 10
+      },
+      "description": "Histogram estimate of Gin request duration; excludes transit, queueing before Gin and logging/export overhead.",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hw5-prometheus"
+          },
+          "expr": "histogram_quantile(0.5, sum by (le, method, endpoint) (rate(product_http_request_duration_seconds_bucket{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s]))) * 1000",
+          "legendFormat": "p50 {{method}}",
+          "refId": "A",
+          "range": true
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hw5-prometheus"
+          },
+          "expr": "histogram_quantile(0.95, sum by (le, method, endpoint) (rate(product_http_request_duration_seconds_bucket{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s]))) * 1000",
+          "legendFormat": "p95 {{method}}",
+          "refId": "B",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ms",
+          "decimals": 2,
+          "min": 0,
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 12,
+            "showPoints": "never",
+            "spanNulls": false
+          },
+          "noValue": "No traffic",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      }
+    },
+    {
+      "id": 8,
+      "title": "Read this dashboard",
+      "type": "text",
+      "gridPos": {
+        "x": 0,
+        "y": 16,
+        "w": 24,
+        "h": 3
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "**Local only \u00b7 0.25 CPU / 512 MiB \u00b7 5 s scrape \u00b7 20 s rate window.** Idle: zero RPS, zero error ratio, no latency percentile. Loaded: 200 users / 2 workers / 120 s, zero think time. ~2% deliberate 400/404 responses remain RED errors but are expected Locust cases. GET = `/v1/products/:productId`; POST = `/v1/products/:productId/details`."
+      }
+    }
+  ],
+  "templating": {
+    "list": [
+      {
+        "name": "phase",
+        "label": "Evidence phase",
+        "type": "custom",
+        "query": "Idle,Loaded",
+        "current": {
+          "text": "Idle",
+          "value": "Idle"
+        },
+        "options": [
+          {
+            "text": "Idle",
+            "value": "Idle",
+            "selected": true
+          },
+          {
+            "text": "Loaded",
+            "value": "Loaded",
+            "selected": false
+          }
+        ],
+        "hide": 0
+      }
+    ]
+  }
+}

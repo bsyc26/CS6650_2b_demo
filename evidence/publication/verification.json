@@ -1,0 +1,28 @@
+{
+  "verified_at_utc": "2026-10-16T20:22:08.479044+00:00",
+  "repository": "https://github.com/bsyc26/CS6650_2b_demo",
+  "layout": "Product code and deployment files at repository root",
+  "checks": {
+    "go_race_tests": "passed",
+    "go_statement_coverage_percent": 88.3,
+    "terraform_fmt": "passed",
+    "terraform_validate": "passed",
+    "terraform_mock_tests_passed": 4,
+    "local_document_links_checked": 126,
+    "screenshot_hashes": "matched original attachments",
+    "configured_credential_matches": 0,
+    "private_runtime_artifacts_in_submission": 0,
+    "staged_files_scanned": 158,
+    "maintained_source_whitespace": "passed; archived evidence preserves original CSV and console formatting"
+  },
+  "excluded": [
+    "AWS credential files",
+    "application .env files",
+    "Terraform state and backups",
+    "Terraform plans",
+    "local tfvars",
+    "Terraform provider cache",
+    "private keys"
+  ],
+  "aws_resources_changed_during_publication": false
+}

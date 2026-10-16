@@ -1,27 +1,32 @@
-# Specify where to find the AWS & Docker providers
 terraform {
+  required_version = ">= 1.9.0, < 2.0.0"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 6.7.0"
+      version = "= 6.7.0"
     }
     docker = {
       source  = "kreuzwerker/docker"
-      version = "~> 2.0"
+      version = "= 4.6.0"
     }
   }
 }
 
-# Configure AWS credentials & region
 provider "aws" {
-  region     = var.aws_region
+  region = var.aws_region
+  default_tags {
+    tags = {
+      Project   = "cs6650-hw5"
+      ManagedBy = "Terraform"
+    }
+  }
 }
 
-# Fetch an ECR auth token so Terraform's Docker provider can log in
 data "aws_ecr_authorization_token" "registry" {}
 
-# Configure Docker provider to authenticate against ECR automatically
 provider "docker" {
+  # The helper supplies DOCKER_HOST from the active Docker CLI context.
+  host = var.docker_host
   registry_auth {
     address  = data.aws_ecr_authorization_token.registry.proxy_endpoint
     username = data.aws_ecr_authorization_token.registry.user_name

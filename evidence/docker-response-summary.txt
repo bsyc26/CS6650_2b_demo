@@ -1,0 +1,29 @@
+HW5 Product API - recorded curl HTTP checks
+Docker Linux/AMD64; base URL: http://127.0.0.1:18087/v1
+500 responses: controlled panic recovery, PRODUCT_TEST_FAULTS=true
+
+PASS GET  /products/12345                -> 200  existing product
+     {"product_id": 12345, "sku": "ABC-123-XYZ", "manufacturer": "Acme Corporation", "category_id": 456, "weight": 1250, "some_other_id": 789}
+
+PASS POST /products/12345/details        -> 204  successful update, empty response
+
+PASS GET  /products/2147483647           -> 404  missing product
+     {"error": "PRODUCT_NOT_FOUND", "message": "Product not found"}
+
+PASS POST /products/12345/details        -> 400  invalid JSON
+     {"error": "INVALID_INPUT", "message": "Invalid input data", "details": "Body must be one JSON Product object with valid field types"}
+
+PASS POST /products/2147483647/details   -> 404  unknown product cannot be created
+     {"error": "PRODUCT_NOT_FOUND", "message": "Product not found"}
+
+PASS GET  /products/12345                -> 401  authentication required
+     {"error": "UNAUTHORIZED", "message": "A valid API key or Bearer token is required"}
+
+PASS GET  /products/12345                -> 500  controlled recovery path
+     {"error": "INTERNAL_ERROR", "message": "Internal server error"}
+
+PASS POST /products/12345/details        -> 500  controlled recovery path
+     {"error": "INTERNAL_ERROR", "message": "Internal server error"}
+
+All selected HTTP checks passed. All 7 declared Product response paths covered.
+Native and Docker HTTP check outputs match exactly.

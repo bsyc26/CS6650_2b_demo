@@ -1,20 +1,15 @@
-FROM golang:1.24-alpine  AS build
-RUN apk add --no-cache git
-
-WORKDIR /src
+FROM --platform=$BUILDPLATFORM golang:1.26.8-bookworm AS build
+WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
+COPY *.go ./
+ARG TARGETOS
+ARG TARGETARCH
+RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} \
+    go build -trimpath -ldflags="-s -w" -o /product-service .
 
-COPY . .
-# disable cgo, target linux, static link
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
-    go build -ldflags="-s -w" -o server .
-
-FROM alpine:latest
-RUN apk add --no-cache ca-certificates
-
-WORKDIR /app
-COPY --from=build /src/server .
-
+FROM gcr.io/distroless/static-debian12:nonroot
+COPY --from=build /product-service /product-service
+ENV PORT=8080
 EXPOSE 8080
-ENTRYPOINT ["./server"]
+ENTRYPOINT ["/product-service"]

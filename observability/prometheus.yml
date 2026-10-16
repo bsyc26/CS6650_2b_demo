@@ -1,0 +1,9 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+
+scrape_configs:
+  - job_name: product
+    scrape_timeout: 4s
+    static_configs:
+      - targets: [product:8080]

@@ -1,0 +1,252 @@
+data.aws_iam_role.lab_role: Reading...
+data.aws_ecr_authorization_token.registry: Reading...
+module.network.data.aws_vpc.default: Reading...
+data.aws_ecr_authorization_token.registry: Read complete after 1s [id=us-east-1]
+data.aws_iam_role.lab_role: Read complete after 1s [id=LabRole]
+module.network.data.aws_vpc.default: Read complete after 2s [id=vpc-0985df23463487a0f]
+module.network.data.aws_subnets.default: Reading...
+module.network.data.aws_subnets.default: Read complete after 0s [id=us-east-1]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # docker_image.app will be created
+  + resource "docker_image" "app" {
+      + id           = (known after apply)
+      + image_id     = (known after apply)
+      + keep_locally = true
+      + name         = (known after apply)
+      + repo_digest  = (known after apply)
+      + triggers     = {
+          + "source_hash" = "bfb15fabea55ff4f3a4060ff2d33fa79afd59419bda8860c5b172af8a63a3cb6"
+        }
+
+      + build {
+          + additional_contexts = []
+          + builder             = "default"
+          + cache_from          = []
+          + cache_to            = []
+          + context             = "/Users/benny/Code/neu/ds_cs6650/hw5/src"
+          + dockerfile          = "Dockerfile"
+          + extra_hosts         = []
+          + platform            = "linux/amd64"
+          + provenance          = "false"
+          + remove              = true
+          + security_opt        = []
+          + tag                 = []
+          + use_legacy_builder  = false
+            # (12 unchanged attributes hidden)
+        }
+    }
+
+  # docker_registry_image.app will be created
+  + resource "docker_registry_image" "app" {
+      + id                   = (known after apply)
+      + insecure_skip_verify = false
+      + keep_remotely        = true
+      + name                 = (known after apply)
+      + sha256_digest        = (known after apply)
+    }
+
+  # module.ecr.aws_ecr_repository.this will be created
+  + resource "aws_ecr_repository" "this" {
+      + arn                  = (known after apply)
+      + force_delete         = true
+      + id                   = (known after apply)
+      + image_tag_mutability = "MUTABLE"
+      + name                 = "cs6650-hw5-product"
+      + region               = "us-east-1"
+      + registry_id          = (known after apply)
+      + repository_url       = (known after apply)
+      + tags_all             = {
+          + "ManagedBy" = "Terraform"
+          + "Project"   = "cs6650-hw5"
+        }
+    }
+
+  # module.ecs.aws_ecs_cluster.this will be created
+  + resource "aws_ecs_cluster" "this" {
+      + arn      = (known after apply)
+      + id       = (known after apply)
+      + name     = "cs6650-hw5-product-cluster"
+      + region   = "us-east-1"
+      + tags_all = {
+          + "ManagedBy" = "Terraform"
+          + "Project"   = "cs6650-hw5"
+        }
+
+      + setting (known after apply)
+    }
+
+  # module.ecs.aws_ecs_service.this will be created
+  + resource "aws_ecs_service" "this" {
+      + arn                                = (known after apply)
+      + availability_zone_rebalancing      = "DISABLED"
+      + cluster                            = (known after apply)
+      + deployment_maximum_percent         = 100
+      + deployment_minimum_healthy_percent = 0
+      + desired_count                      = 1
+      + enable_ecs_managed_tags            = false
+      + enable_execute_command             = false
+      + iam_role                           = (known after apply)
+      + id                                 = (known after apply)
+      + launch_type                        = "FARGATE"
+      + name                               = "cs6650-hw5-product"
+      + platform_version                   = "LATEST"
+      + region                             = "us-east-1"
+      + scheduling_strategy                = "REPLICA"
+      + tags_all                           = {
+          + "ManagedBy" = "Terraform"
+          + "Project"   = "cs6650-hw5"
+        }
+      + task_definition                    = (known after apply)
+      + triggers                           = (known after apply)
+      + wait_for_steady_state              = true
+
+      + deployment_circuit_breaker {
+          + enable   = true
+          + rollback = true
+        }
+
+      + network_configuration {
+          + assign_public_ip = true
+          + security_groups  = (known after apply)
+          + subnets          = [
+              + "subnet-027c8604018f101b7",
+              + "subnet-0320333ff07495a55",
+              + "subnet-04b08f8c3708a843a",
+              + "subnet-052fa24cd2cbecdca",
+              + "subnet-0646b1c1986d4619d",
+              + "subnet-0a5b330d80896588a",
+            ]
+        }
+
+      + timeouts {
+          + create = "15m"
+          + delete = "10m"
+          + update = "15m"
+        }
+    }
+
+  # module.ecs.aws_ecs_task_definition.this will be created
+  + resource "aws_ecs_task_definition" "this" {
+      + arn                      = (known after apply)
+      + arn_without_revision     = (known after apply)
+      + container_definitions    = (sensitive value)
+      + cpu                      = "256"
+      + enable_fault_injection   = (known after apply)
+      + execution_role_arn       = "arn:aws:iam::108084419214:role/LabRole"
+      + family                   = "cs6650-hw5-product-task"
+      + id                       = (known after apply)
+      + memory                   = "512"
+      + network_mode             = "awsvpc"
+      + region                   = "us-east-1"
+      + requires_compatibilities = [
+          + "FARGATE",
+        ]
+      + revision                 = (known after apply)
+      + skip_destroy             = false
+      + tags_all                 = {
+          + "ManagedBy" = "Terraform"
+          + "Project"   = "cs6650-hw5"
+        }
+      + task_role_arn            = "arn:aws:iam::108084419214:role/LabRole"
+      + track_latest             = false
+
+      + runtime_platform {
+          + cpu_architecture        = "X86_64"
+          + operating_system_family = "LINUX"
+        }
+    }
+
+  # module.logging.aws_cloudwatch_log_group.this will be created
+  + resource "aws_cloudwatch_log_group" "this" {
+      + arn               = (known after apply)
+      + id                = (known after apply)
+      + log_group_class   = (known after apply)
+      + name              = "/ecs/cs6650-hw5-product"
+      + name_prefix       = (known after apply)
+      + region            = "us-east-1"
+      + retention_in_days = 7
+      + skip_destroy      = false
+      + tags_all          = {
+          + "ManagedBy" = "Terraform"
+          + "Project"   = "cs6650-hw5"
+        }
+    }
+
+  # module.network.aws_security_group.this will be created
+  + resource "aws_security_group" "this" {
+      + arn                    = (known after apply)
+      + description            = "Allow inbound on 8080"
+      + egress                 = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "Allow all outbound"
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "-1"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 0
+            },
+        ]
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "172.59.130.150/32",
+                ]
+              + description      = "Product API from configured clients"
+              + from_port        = 8080
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 8080
+            },
+        ]
+      + name                   = "cs6650-hw5-product-sg"
+      + name_prefix            = (known after apply)
+      + owner_id               = (known after apply)
+      + region                 = "us-east-1"
+      + revoke_rules_on_delete = false
+      + tags_all               = {
+          + "ManagedBy" = "Terraform"
+          + "Project"   = "cs6650-hw5"
+        }
+      + vpc_id                 = "vpc-0985df23463487a0f"
+    }
+
+Plan: 8 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + aws_region               = "us-east-1"
+  + cloudwatch_log_group     = "/ecs/cs6650-hw5-product"
+  + deployment_configuration = {
+      + architecture = "X86_64"
+      + cpu          = "256"
+      + image        = (known after apply)
+      + memory       = "512"
+      + port         = 8080
+      + task_count   = 1
+    }
+  + ecr_repository_url       = (known after apply)
+  + ecs_cluster_name         = "cs6650-hw5-product-cluster"
+  + ecs_service_name         = "cs6650-hw5-product"
+  + image_tag                = "src-bfb15fabea55ff4f3a40"
+  + task_definition_arn      = (known after apply)
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: deployment.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "deployment.tfplan"

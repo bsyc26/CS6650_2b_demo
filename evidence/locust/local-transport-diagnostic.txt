@@ -1,0 +1,28 @@
+[2026-10-16 19:08:41,118] e2dfcd0ca8d0/INFO/locust.main: Starting Locust 2.46.5
+[2026-10-16 19:08:41,118] e2dfcd0ca8d0/INFO/locust.main: Run time limit set to 2 seconds
+[2026-10-16 19:08:41,119] e2dfcd0ca8d0/INFO/locust.runners: Ramping to 1 users at a rate of 1.00 per second
+[2026-10-16 19:08:41,119] e2dfcd0ca8d0/INFO/locust.runners: All users spawned: {"ProductFastHttpUser": 1} (1 total users)
+[2026-10-16 19:08:43,015] e2dfcd0ca8d0/INFO/locust.main: --run-time limit reached, shutting down
+[2026-10-16 19:08:43,027] e2dfcd0ca8d0/INFO/locust.main: Shutting down (exit code 1)
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+GET      /v1/products/{productId}                                                           8   8(100.00%) |      1       0       1      1 |    4.49        4.49
+POST     /v1/products/{productId}/details                                                   1   1(100.00%) |      1       1       1      1 |    0.56        0.56
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                         9   9(100.00%) |      1       0       1      1 |    5.05        5.05
+
+Response time percentiles (approximated)
+Type     Name                                                                                  50%    66%    75%    80%    90%    95%    98%    99%  99.9% 99.99%   100% # reqs
+--------|--------------------------------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+GET      /v1/products/{productId}                                                                1      1      1      1      2      2      2      2      2      2      2      8
+POST     /v1/products/{productId}/details                                                        2      2      2      2      2      2      2      2      2      2      2      1
+--------|--------------------------------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+         Aggregated                                                                              1      1      1      2      2      2      2      2      2      2      2      9
+
+Error report
+# occurrences      Error                                                                                               
+------------------|---------------------------------------------------------------------------------------------------------------------------------------------
+8                  GET /v1/products/{productId}: ConnectionRefusedError(111, 'Connection refused')                     
+1                  POST /v1/products/{productId}/details: ConnectionRefusedError(111, 'Connection refused')            
+------------------|---------------------------------------------------------------------------------------------------------------------------------------------
+

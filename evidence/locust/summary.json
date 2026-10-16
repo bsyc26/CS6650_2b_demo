@@ -1,0 +1,62 @@
+[
+  {
+    "run_id": "http-50",
+    "class": "ProductHttpUser",
+    "users": 50,
+    "workers": 1,
+    "spawn_rate": 10.0,
+    "run_time": "90s",
+    "wait_seconds": [
+      0.1,
+      0.3
+    ],
+    "requests": 12831,
+    "failures": 0,
+    "failure_percent": 0.0,
+    "average_rps": 142.53763445986453,
+    "average_ms": 142.31156541329597,
+    "p50_ms": 110.0,
+    "p95_ms": 350.0,
+    "p99_ms": 770.0
+  },
+  {
+    "run_id": "fast-50",
+    "class": "ProductFastHttpUser",
+    "users": 50,
+    "workers": 1,
+    "spawn_rate": 10.0,
+    "run_time": "90s",
+    "wait_seconds": [
+      0.1,
+      0.3
+    ],
+    "requests": 5485,
+    "failures": 0,
+    "failure_percent": 0.0,
+    "average_rps": 60.98742707580032,
+    "average_ms": 598.0981989440297,
+    "p50_ms": 580.0,
+    "p95_ms": 840.0,
+    "p99_ms": 2000.0
+  },
+  {
+    "run_id": "stress-1000",
+    "class": "ProductFastHttpUser",
+    "users": 1000,
+    "workers": 4,
+    "spawn_rate": 100.0,
+    "run_time": "90s",
+    "wait_seconds": [
+      0.0,
+      0.0
+    ],
+    "requests": 58568,
+    "failures": 299,
+    "failure_percent": 0.5105176888403223,
+    "average_rps": 650.6184643622097,
+    "average_ms": 1434.2683099760109,
+    "p50_ms": 840.0,
+    "p95_ms": 3600.0,
+    "p99_ms": 8700.0
+  }
+]

@@ -1,0 +1,110 @@
+services:
+  product:
+    image: hw5-product:observability
+    build:
+      context: ../src
+    environment:
+      PORT: "8080"
+      PRODUCT_API_KEY: "${PRODUCT_API_KEY:?Run scripts/observability.sh up}"
+      PRODUCT_TEST_FAULTS: "false"
+    ports:
+      - "127.0.0.1:18088:8080"
+    cpus: 0.25
+    mem_limit: 512m
+    read_only: true
+    tmpfs: /tmp
+    logging:
+      driver: json-file
+      options:
+        max-size: "20m"
+        max-file: "3"
+
+  prometheus:
+    image: prom/prometheus:v3.15.0
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=24h
+      - --storage.tsdb.retention.size=512MB
+    ports:
+      - "127.0.0.1:19090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    depends_on:
+      - product
+
+  grafana:
+    image: grafana/grafana:13.2.4
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: "${GRAFANA_ADMIN_PASSWORD:?Run scripts/observability.sh up}"
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer
+      GF_AUTH_DISABLE_LOGIN_FORM: "true"
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_USERS_DEFAULT_THEME: dark
+      GF_ANALYTICS_REPORTING_ENABLED: "false"
+      GF_ANALYTICS_CHECK_FOR_UPDATES: "false"
+      GF_ANALYTICS_CHECK_FOR_PLUGIN_UPDATES: "false"
+      GF_SECURITY_DISABLE_GRAVATAR: "true"
+    ports:
+      - "127.0.0.1:13000:3000"
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana-data:/var/lib/grafana
+    depends_on:
+      - prometheus
+
+  locust-master:
+    profiles: [load]
+    image: locustio/locust:2.46.5
+    environment:
+      PRODUCT_API_KEY: "${PRODUCT_API_KEY}"
+    ports:
+      - "127.0.0.1:18089:8089"
+    volumes:
+      - ../locust:/mnt/locust:ro
+      - ../evidence/observability:/results
+    command:
+      - -f
+      - /mnt/locust/local_red.py
+      - ProductREDFastUser
+      - --master
+      - --host
+      - http://product:8080
+      - --autostart
+      - --expect-workers
+      - "2"
+      - --users
+      - "${RED_USERS:-200}"
+      - --spawn-rate
+      - "${RED_SPAWN_RATE:-50}"
+      - --run-time
+      - "${RED_RUN_TIME:-120s}"
+      - --csv
+      - "/results/${RED_RUN_ID:-local-red}"
+      - --csv-full-history
+    depends_on:
+      - product
+
+  locust-worker:
+    profiles: [load]
+    image: locustio/locust:2.46.5
+    environment:
+      PRODUCT_API_KEY: "${PRODUCT_API_KEY}"
+    volumes:
+      - ../locust:/mnt/locust:ro
+    command:
+      - -f
+      - /mnt/locust/local_red.py
+      - ProductREDFastUser
+      - --worker
+      - --master-host
+      - locust-master
+    depends_on:
+      - locust-master
+
+volumes:
+  prometheus-data:
+  grafana-data:

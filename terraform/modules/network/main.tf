@@ -9,6 +9,10 @@ data "aws_subnets" "default" {
     name   = "vpc-id"
     values = [data.aws_vpc.default.id]
   }
+  filter {
+    name   = "default-for-az"
+    values = ["true"]
+  }
 }
 
 # Create a security group to allow HTTP to your container port
@@ -22,7 +26,7 @@ resource "aws_security_group" "this" {
     to_port     = var.container_port
     protocol    = "tcp"
     cidr_blocks = var.cidr_blocks
-    description = "Allow HTTP traffic"
+    description = "Product API from configured clients"
   }
 
   egress {

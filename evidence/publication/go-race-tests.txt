@@ -1,0 +1,1 @@
+ok  	github.com/bsyc26/cs6650/hw5/product	1.655s	coverage: 88.3% of statements

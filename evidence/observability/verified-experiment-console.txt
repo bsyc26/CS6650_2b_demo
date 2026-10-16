@@ -1,0 +1,33 @@
+red-20261016-verified: idle phase started (90s)
+Idle verified: zero Product RPS and zero non-2xx ratio. Starting Locust.
+ Container hw5-observability-locust-master-1 Recreate 
+ Container hw5-observability-locust-master-1 Recreated 
+ Container hw5-observability-locust-worker-1 Recreate 
+ Container hw5-observability-locust-worker-2 Recreate 
+ Container hw5-observability-locust-worker-1 Recreated 
+ Container hw5-observability-locust-worker-2 Recreated 
+ Container hw5-observability-locust-master-1 Starting 
+ Container hw5-observability-locust-master-1 Started 
+ Container hw5-observability-locust-worker-2 Starting 
+ Container hw5-observability-locust-worker-2 Started 
+ Container hw5-observability-locust-worker-1 Starting 
+ Container hw5-observability-locust-worker-1 Started 
+Locust: http://127.0.0.1:18089 (automatically stops load after the configured duration)
+Locust load ended. Waiting for final scrapes and worker reports.
+{
+  "run_id": "red-20261016-verified",
+  "requests": "802207",
+  "unexpected_locust_failures": "0",
+  "server_non_2xx_percent": 1.9871461739491305,
+  "log_counter_match": true,
+  "grafana_urls": {
+    "idle": "http://127.0.0.1:13000/d/hw5-product-red/hw5-product-api-red?orgId=1&from=1792178882023&to=1792178947035&var-phase=Idle&kiosk=true",
+    "loaded": "http://127.0.0.1:13000/d/hw5-product-red/hw5-product-api-red?orgId=1&from=1792178949000&to=1792179068000&var-phase=Loaded&kiosk=true"
+  }
+}
+ Container hw5-observability-locust-worker-1 Stopping 
+ Container hw5-observability-locust-worker-2 Stopping 
+ Container hw5-observability-locust-worker-1 Stopped 
+ Container hw5-observability-locust-worker-2 Stopped 
+ Container hw5-observability-locust-master-1 Stopping 
+ Container hw5-observability-locust-master-1 Stopped 

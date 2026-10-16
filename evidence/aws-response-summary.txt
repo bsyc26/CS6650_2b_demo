@@ -1,0 +1,9 @@
+PASS GET  /products/12345                -> 200  existing product
+PASS POST /products/12345/details        -> 204  successful update, empty response
+PASS GET  /products/2147483647           -> 404  missing product
+PASS POST /products/12345/details        -> 400  invalid JSON
+PASS POST /products/2147483647/details   -> 404  unknown product cannot be created
+PASS GET  /products/12345                -> 401  authentication required
+PASS successful POST is returned by the next GET
+PASS original product restored after verification
+All selected HTTP checks passed. 500 demonstration skipped; rerun with --faults on an opted-in test server.

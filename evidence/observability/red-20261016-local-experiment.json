@@ -1,0 +1,24 @@
+{
+  "run_id": "red-20261016-local",
+  "users": 200,
+  "workers": 2,
+  "spawn_rate": 50,
+  "configured_load_seconds": 120,
+  "think_time_seconds": 0,
+  "mix_weights": {
+    "GET_200": 80,
+    "POST_204": 18,
+    "GET_404_expected": 1,
+    "POST_400_expected": 1
+  },
+  "product_cpu_limit": 0.25,
+  "product_memory_mib": 512,
+  "scrape_interval_seconds": 5,
+  "rate_window_seconds": 20,
+  "idle": {
+    "start": 1792178613.831562,
+    "end": 1792178703.837085
+  },
+  "state": "excluded",
+  "exclusion_reason": "Post-run Docker log retrieval lost early records to log rotation. The log/counter completeness check caught the mismatch; rerun uses continuous capture from the start."
+}

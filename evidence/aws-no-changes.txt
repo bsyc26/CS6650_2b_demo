@@ -1,0 +1,21 @@
+module.network.data.aws_vpc.default: Reading...
+data.aws_ecr_authorization_token.registry: Reading...
+data.aws_iam_role.lab_role: Reading...
+module.logging.aws_cloudwatch_log_group.this: Refreshing state... [id=/ecs/cs6650-hw5-product]
+module.ecr.aws_ecr_repository.this: Refreshing state... [id=cs6650-hw5-product]
+module.ecs.aws_ecs_cluster.this: Refreshing state... [id=arn:aws:ecs:us-east-1:108084419214:cluster/cs6650-hw5-product-cluster]
+data.aws_iam_role.lab_role: Read complete after 0s [id=LabRole]
+data.aws_ecr_authorization_token.registry: Read complete after 0s [id=us-east-1]
+docker_image.app: Refreshing state... [id=sha256:effab76693b894411a3b6c91386be47d5a4a5fe95b0075297de0612a18319b12108084419214.dkr.ecr.us-east-1.amazonaws.com/cs6650-hw5-product:src-bfb15fabea55ff4f3a40]
+docker_registry_image.app: Refreshing state... [id=sha256:effab76693b894411a3b6c91386be47d5a4a5fe95b0075297de0612a18319b12]
+module.ecs.aws_ecs_task_definition.this: Refreshing state... [id=cs6650-hw5-product-task]
+module.network.data.aws_vpc.default: Read complete after 1s [id=vpc-0985df23463487a0f]
+module.network.data.aws_subnets.default: Reading...
+module.network.aws_security_group.this: Refreshing state... [id=sg-019cc607a26904b56]
+module.network.data.aws_subnets.default: Read complete after 0s [id=us-east-1]
+module.ecs.aws_ecs_service.this: Refreshing state... [id=arn:aws:ecs:us-east-1:108084419214:service/cs6650-hw5-product-cluster/cs6650-hw5-product]
+
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.

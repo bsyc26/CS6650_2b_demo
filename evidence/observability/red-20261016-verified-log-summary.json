@@ -1,0 +1,24 @@
+{
+  "requests": 802407,
+  "non_2xx": 15945,
+  "non_2xx_percent": 1.9871461739491305,
+  "by_method_endpoint_status": {
+    "GET /v1/products/:productId 200": 641972,
+    "POST /v1/products/:productId/details 204": 144490,
+    "GET /v1/products/:productId 404": 7995,
+    "POST /v1/products/:productId/details 400": 7950
+  },
+  "prometheus_counter_delta": {
+    "GET /v1/products/:productId 200": 641972,
+    "GET /v1/products/:productId 404": 7995,
+    "POST /v1/products/:productId/details 204": 144490,
+    "POST /v1/products/:productId/details 400": 7950
+  },
+  "log_counter_match": true,
+  "mean_duration_ms": 0.01242070046747113,
+  "p50_duration_ms": 0.001,
+  "p95_duration_ms": 0.008,
+  "percentile_method": "nearest-rank from rounded JSON duration_ms; dashboard uses histogram estimates",
+  "transient_complete_log": "/var/folders/62/w3d8ymz53zsgdfzh4kv5154w0000gn/T/hw5-red-20261016-verified-product.jsonl.gz",
+  "transient_log_format": "gzip-compressed JSON lines"
+}

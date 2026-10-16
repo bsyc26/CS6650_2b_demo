@@ -1,0 +1,660 @@
+{
+  "results": {
+    "p1A": {
+      "status": 200,
+      "frames": [
+        {
+          "schema": {
+            "refId": "p1A",
+            "meta": {
+              "type": "numeric-multi",
+              "typeVersion": [
+                0,
+                1
+              ],
+              "custom": {
+                "calculatedMinStep": 5000,
+                "resultType": "vector"
+              },
+              "executedQueryString": "Expr: sum(rate(product_http_requests_total{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s]))\nStep: 5s"
+            },
+            "fields": [
+              {
+                "name": "Time",
+                "type": "time",
+                "typeInfo": {
+                  "frame": "time.Time"
+                },
+                "config": {
+                  "interval": 5000
+                }
+              },
+              {
+                "name": "Value",
+                "type": "number",
+                "typeInfo": {
+                  "frame": "float64"
+                },
+                "labels": {},
+                "config": {
+                  "displayNameFromDS": "sum(rate(product_http_requests_total{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s]))"
+                }
+              }
+            ]
+          },
+          "data": {
+            "values": [
+              [
+                1792179045838
+              ],
+              [
+                6658.1105407027135
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    "p2A": {
+      "status": 200,
+      "frames": [
+        {
+          "schema": {
+            "refId": "p2A",
+            "meta": {
+              "type": "numeric-multi",
+              "typeVersion": [
+                0,
+                1
+              ],
+              "custom": {
+                "calculatedMinStep": 5000,
+                "resultType": "vector"
+              },
+              "executedQueryString": "Expr: 100 * sum(rate(product_http_errors_total{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s])) / clamp_min(sum(rate(product_http_requests_total{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s])), 1e-9)\nStep: 5s"
+            },
+            "fields": [
+              {
+                "name": "Time",
+                "type": "time",
+                "typeInfo": {
+                  "frame": "time.Time"
+                },
+                "config": {
+                  "interval": 5000
+                }
+              },
+              {
+                "name": "Value",
+                "type": "number",
+                "typeInfo": {
+                  "frame": "float64"
+                },
+                "labels": {},
+                "config": {
+                  "displayNameFromDS": "100 * sum(rate(product_http_errors_total{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s])) / clamp_min(sum(rate(product_http_requests_total{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s])), 1e-9)"
+                }
+              }
+            ]
+          },
+          "data": {
+            "values": [
+              [
+                1792179045838
+              ],
+              [
+                1.9205928002803787
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    "p3A": {
+      "status": 200,
+      "frames": [
+        {
+          "schema": {
+            "refId": "p3A",
+            "meta": {
+              "type": "numeric-multi",
+              "typeVersion": [
+                0,
+                1
+              ],
+              "custom": {
+                "calculatedMinStep": 5000,
+                "resultType": "vector"
+              },
+              "executedQueryString": "Expr: histogram_quantile(0.5, sum by (le) (rate(product_http_request_duration_seconds_bucket{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s]))) * 1000\nStep: 5s"
+            },
+            "fields": [
+              {
+                "name": "Time",
+                "type": "time",
+                "typeInfo": {
+                  "frame": "time.Time"
+                },
+                "config": {
+                  "interval": 5000
+                }
+              },
+              {
+                "name": "Value",
+                "type": "number",
+                "typeInfo": {
+                  "frame": "float64"
+                },
+                "labels": {},
+                "config": {
+                  "displayNameFromDS": "histogram_quantile(0.5, sum by (le) (rate(product_http_request_duration_seconds_bucket{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s]))) * 1000"
+                }
+              }
+            ]
+          },
+          "data": {
+            "values": [
+              [
+                1792179045838
+              ],
+              [
+                0.005194324234354194
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    "p4A": {
+      "status": 200,
+      "frames": [
+        {
+          "schema": {
+            "refId": "p4A",
+            "meta": {
+              "type": "numeric-multi",
+              "typeVersion": [
+                0,
+                1
+              ],
+              "custom": {
+                "calculatedMinStep": 5000,
+                "resultType": "vector"
+              },
+              "executedQueryString": "Expr: histogram_quantile(0.95, sum by (le) (rate(product_http_request_duration_seconds_bucket{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s]))) * 1000\nStep: 5s"
+            },
+            "fields": [
+              {
+                "name": "Time",
+                "type": "time",
+                "typeInfo": {
+                  "frame": "time.Time"
+                },
+                "config": {
+                  "interval": 5000
+                }
+              },
+              {
+                "name": "Value",
+                "type": "number",
+                "typeInfo": {
+                  "frame": "float64"
+                },
+                "labels": {},
+                "config": {
+                  "displayNameFromDS": "histogram_quantile(0.95, sum by (le) (rate(product_http_request_duration_seconds_bucket{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s]))) * 1000"
+                }
+              }
+            ]
+          },
+          "data": {
+            "values": [
+              [
+                1792179045838
+              ],
+              [
+                0.00986921604527297
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    "p5A": {
+      "status": 200,
+      "frames": [
+        {
+          "schema": {
+            "refId": "p5A",
+            "meta": {
+              "type": "numeric-multi",
+              "typeVersion": [
+                0,
+                1
+              ],
+              "custom": {
+                "calculatedMinStep": 5000,
+                "resultType": "vector"
+              },
+              "executedQueryString": "Expr: sum by (method, endpoint) (rate(product_http_requests_total{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s]))\nStep: 5s"
+            },
+            "fields": [
+              {
+                "name": "Time",
+                "type": "time",
+                "typeInfo": {
+                  "frame": "time.Time"
+                },
+                "config": {
+                  "interval": 5000
+                }
+              },
+              {
+                "name": "Value",
+                "type": "number",
+                "typeInfo": {
+                  "frame": "float64"
+                },
+                "labels": {
+                  "endpoint": "/v1/products/:productId",
+                  "method": "GET"
+                },
+                "config": {
+                  "displayNameFromDS": "{endpoint=\"/v1/products/:productId\", method=\"GET\"}"
+                }
+              }
+            ]
+          },
+          "data": {
+            "values": [
+              [
+                1792179045838
+              ],
+              [
+                5388.025868391226
+              ]
+            ]
+          }
+        },
+        {
+          "schema": {
+            "refId": "p5A",
+            "meta": {
+              "type": "numeric-multi",
+              "typeVersion": [
+                0,
+                1
+              ],
+              "custom": {
+                "resultType": "vector"
+              }
+            },
+            "fields": [
+              {
+                "name": "Time",
+                "type": "time",
+                "typeInfo": {
+                  "frame": "time.Time"
+                },
+                "config": {
+                  "interval": 5000
+                }
+              },
+              {
+                "name": "Value",
+                "type": "number",
+                "typeInfo": {
+                  "frame": "float64"
+                },
+                "labels": {
+                  "endpoint": "/v1/products/:productId/details",
+                  "method": "POST"
+                },
+                "config": {
+                  "displayNameFromDS": "{endpoint=\"/v1/products/:productId/details\", method=\"POST\"}"
+                }
+              }
+            ]
+          },
+          "data": {
+            "values": [
+              [
+                1792179045838
+              ],
+              [
+                1270.0846723114876
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    "p6A": {
+      "status": 200,
+      "frames": [
+        {
+          "schema": {
+            "refId": "p6A",
+            "meta": {
+              "type": "numeric-multi",
+              "typeVersion": [
+                0,
+                1
+              ],
+              "custom": {
+                "calculatedMinStep": 5000,
+                "resultType": "vector"
+              },
+              "executedQueryString": "Expr: 100 * sum by (method, endpoint) (rate(product_http_errors_total{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s])) / clamp_min(sum by (method, endpoint) (rate(product_http_requests_total{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s])), 1e-9)\nStep: 5s"
+            },
+            "fields": [
+              {
+                "name": "Time",
+                "type": "time",
+                "typeInfo": {
+                  "frame": "time.Time"
+                },
+                "config": {
+                  "interval": 5000
+                }
+              },
+              {
+                "name": "Value",
+                "type": "number",
+                "typeInfo": {
+                  "frame": "float64"
+                },
+                "labels": {
+                  "endpoint": "/v1/products/:productId",
+                  "method": "GET"
+                },
+                "config": {
+                  "displayNameFromDS": "{endpoint=\"/v1/products/:productId\", method=\"GET\"}"
+                }
+              }
+            ]
+          },
+          "data": {
+            "values": [
+              [
+                1792179045838
+              ],
+              [
+                1.1953226504980512
+              ]
+            ]
+          }
+        },
+        {
+          "schema": {
+            "refId": "p6A",
+            "meta": {
+              "type": "numeric-multi",
+              "typeVersion": [
+                0,
+                1
+              ],
+              "custom": {
+                "resultType": "vector"
+              }
+            },
+            "fields": [
+              {
+                "name": "Time",
+                "type": "time",
+                "typeInfo": {
+                  "frame": "time.Time"
+                },
+                "config": {
+                  "interval": 5000
+                }
+              },
+              {
+                "name": "Value",
+                "type": "number",
+                "typeInfo": {
+                  "frame": "float64"
+                },
+                "labels": {
+                  "endpoint": "/v1/products/:productId/details",
+                  "method": "POST"
+                },
+                "config": {
+                  "displayNameFromDS": "{endpoint=\"/v1/products/:productId/details\", method=\"POST\"}"
+                }
+              }
+            ]
+          },
+          "data": {
+            "values": [
+              [
+                1792179045838
+              ],
+              [
+                4.997375328083989
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    "p7A": {
+      "status": 200,
+      "frames": [
+        {
+          "schema": {
+            "refId": "p7A",
+            "meta": {
+              "type": "numeric-multi",
+              "typeVersion": [
+                0,
+                1
+              ],
+              "custom": {
+                "calculatedMinStep": 5000,
+                "resultType": "vector"
+              },
+              "executedQueryString": "Expr: histogram_quantile(0.5, sum by (le, method, endpoint) (rate(product_http_request_duration_seconds_bucket{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s]))) * 1000\nStep: 5s"
+            },
+            "fields": [
+              {
+                "name": "Time",
+                "type": "time",
+                "typeInfo": {
+                  "frame": "time.Time"
+                },
+                "config": {
+                  "interval": 5000
+                }
+              },
+              {
+                "name": "Value",
+                "type": "number",
+                "typeInfo": {
+                  "frame": "float64"
+                },
+                "labels": {
+                  "endpoint": "/v1/products/:productId",
+                  "method": "GET"
+                },
+                "config": {
+                  "displayNameFromDS": "{endpoint=\"/v1/products/:productId\", method=\"GET\"}"
+                }
+              }
+            ]
+          },
+          "data": {
+            "values": [
+              [
+                1792179045838
+              ],
+              [
+                0.005075299880675753
+              ]
+            ]
+          }
+        },
+        {
+          "schema": {
+            "refId": "p7A",
+            "meta": {
+              "type": "numeric-multi",
+              "typeVersion": [
+                0,
+                1
+              ],
+              "custom": {
+                "resultType": "vector"
+              }
+            },
+            "fields": [
+              {
+                "name": "Time",
+                "type": "time",
+                "typeInfo": {
+                  "frame": "time.Time"
+                },
+                "config": {
+                  "interval": 5000
+                }
+              },
+              {
+                "name": "Value",
+                "type": "number",
+                "typeInfo": {
+                  "frame": "float64"
+                },
+                "labels": {
+                  "endpoint": "/v1/products/:productId/details",
+                  "method": "POST"
+                },
+                "config": {
+                  "displayNameFromDS": "{endpoint=\"/v1/products/:productId/details\", method=\"POST\"}"
+                }
+              }
+            ]
+          },
+          "data": {
+            "values": [
+              [
+                1792179045838
+              ],
+              [
+                0.005768182643977473
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    "p7B": {
+      "status": 200,
+      "frames": [
+        {
+          "schema": {
+            "refId": "p7B",
+            "meta": {
+              "type": "numeric-multi",
+              "typeVersion": [
+                0,
+                1
+              ],
+              "custom": {
+                "calculatedMinStep": 5000,
+                "resultType": "vector"
+              },
+              "executedQueryString": "Expr: histogram_quantile(0.95, sum by (le, method, endpoint) (rate(product_http_request_duration_seconds_bucket{job=\"product\",endpoint=~\"/v1/products/.*\"}[20s]))) * 1000\nStep: 5s"
+            },
+            "fields": [
+              {
+                "name": "Time",
+                "type": "time",
+                "typeInfo": {
+                  "frame": "time.Time"
+                },
+                "config": {
+                  "interval": 5000
+                }
+              },
+              {
+                "name": "Value",
+                "type": "number",
+                "typeInfo": {
+                  "frame": "float64"
+                },
+                "labels": {
+                  "endpoint": "/v1/products/:productId",
+                  "method": "GET"
+                },
+                "config": {
+                  "displayNameFromDS": "{endpoint=\"/v1/products/:productId\", method=\"GET\"}"
+                }
+              }
+            ]
+          },
+          "data": {
+            "values": [
+              [
+                1792179045838
+              ],
+              [
+                0.009643069773283929
+              ]
+            ]
+          }
+        },
+        {
+          "schema": {
+            "refId": "p7B",
+            "meta": {
+              "type": "numeric-multi",
+              "typeVersion": [
+                0,
+                1
+              ],
+              "custom": {
+                "resultType": "vector"
+              }
+            },
+            "fields": [
+              {
+                "name": "Time",
+                "type": "time",
+                "typeInfo": {
+                  "frame": "time.Time"
+                },
+                "config": {
+                  "interval": 5000
+                }
+              },
+              {
+                "name": "Value",
+                "type": "number",
+                "typeInfo": {
+                  "frame": "float64"
+                },
+                "labels": {
+                  "endpoint": "/v1/products/:productId/details",
+                  "method": "POST"
+                },
+                "config": {
+                  "displayNameFromDS": "{endpoint=\"/v1/products/:productId/details\", method=\"POST\"}"
+                }
+              }
+            ]
+          },
+          "data": {
+            "values": [
+              [
+                1792179045838
+              ],
+              [
+                0.021865951073389917
+              ]
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

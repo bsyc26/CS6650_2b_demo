@@ -1,0 +1,260 @@
+# HELP go_gc_duration_seconds A summary of the wall-time pause (stop-the-world) duration in garbage collection cycles.
+# TYPE go_gc_duration_seconds summary
+go_gc_duration_seconds{quantile="0"} 2.6709e-05
+go_gc_duration_seconds{quantile="0.25"} 5.6459e-05
+go_gc_duration_seconds{quantile="0.5"} 9.1584e-05
+go_gc_duration_seconds{quantile="0.75"} 0.0001425
+go_gc_duration_seconds{quantile="1"} 0.084362708
+go_gc_duration_seconds_sum 6.755247004
+go_gc_duration_seconds_count 1656
+# HELP go_gc_gogc_percent Heap size target percentage configured by the user, otherwise 100. This value is set by the GOGC environment variable, and the runtime/debug.SetGCPercent function. Sourced from /gc/gogc:percent.
+# TYPE go_gc_gogc_percent gauge
+go_gc_gogc_percent 100
+# HELP go_gc_gomemlimit_bytes Go runtime memory limit configured by the user, otherwise math.MaxInt64. This value is set by the GOMEMLIMIT environment variable, and the runtime/debug.SetMemoryLimit function. Sourced from /gc/gomemlimit:bytes.
+# TYPE go_gc_gomemlimit_bytes gauge
+go_gc_gomemlimit_bytes 9.223372036854776e+18
+# HELP go_goroutines Number of goroutines that currently exist.
+# TYPE go_goroutines gauge
+go_goroutines 7
+# HELP go_info Information about the Go environment.
+# TYPE go_info gauge
+go_info{version="go1.26.8"} 1
+# HELP go_memstats_alloc_bytes Number of bytes allocated in heap and currently in use. Equals to /memory/classes/heap/objects:bytes.
+# TYPE go_memstats_alloc_bytes gauge
+go_memstats_alloc_bytes 2.677808e+06
+# HELP go_memstats_alloc_bytes_total Total number of bytes allocated in heap until now, even if released already. Equals to /gc/heap/allocs:bytes.
+# TYPE go_memstats_alloc_bytes_total counter
+go_memstats_alloc_bytes_total 5.160639808e+09
+# HELP go_memstats_buck_hash_sys_bytes Number of bytes used by the profiling bucket hash table. Equals to /memory/classes/profiling/buckets:bytes.
+# TYPE go_memstats_buck_hash_sys_bytes gauge
+go_memstats_buck_hash_sys_bytes 1.444814e+06
+# HELP go_memstats_frees_total Total number of heap objects frees. Equals to /gc/heap/frees:objects + /gc/heap/tiny/allocs:objects.
+# TYPE go_memstats_frees_total counter
+go_memstats_frees_total 6.0492114e+07
+# HELP go_memstats_gc_sys_bytes Number of bytes used for garbage collection system metadata. Equals to /memory/classes/metadata/other:bytes.
+# TYPE go_memstats_gc_sys_bytes gauge
+go_memstats_gc_sys_bytes 3.160816e+06
+# HELP go_memstats_heap_alloc_bytes Number of heap bytes allocated and currently in use, same as go_memstats_alloc_bytes. Equals to /memory/classes/heap/objects:bytes.
+# TYPE go_memstats_heap_alloc_bytes gauge
+go_memstats_heap_alloc_bytes 2.677808e+06
+# HELP go_memstats_heap_idle_bytes Number of heap bytes waiting to be used. Equals to /memory/classes/heap/released:bytes + /memory/classes/heap/free:bytes.
+# TYPE go_memstats_heap_idle_bytes gauge
+go_memstats_heap_idle_bytes 1.5712256e+07
+# HELP go_memstats_heap_inuse_bytes Number of heap bytes that are in use. Equals to /memory/classes/heap/objects:bytes + /memory/classes/heap/unused:bytes
+# TYPE go_memstats_heap_inuse_bytes gauge
+go_memstats_heap_inuse_bytes 4.210688e+06
+# HELP go_memstats_heap_objects Number of currently allocated objects. Equals to /gc/heap/objects:objects.
+# TYPE go_memstats_heap_objects gauge
+go_memstats_heap_objects 5319
+# HELP go_memstats_heap_released_bytes Number of heap bytes released to OS. Equals to /memory/classes/heap/released:bytes.
+# TYPE go_memstats_heap_released_bytes gauge
+go_memstats_heap_released_bytes 1.2926976e+07
+# HELP go_memstats_heap_sys_bytes Number of heap bytes obtained from system. Equals to /memory/classes/heap/objects:bytes + /memory/classes/heap/unused:bytes + /memory/classes/heap/released:bytes + /memory/classes/heap/free:bytes.
+# TYPE go_memstats_heap_sys_bytes gauge
+go_memstats_heap_sys_bytes 1.9922944e+07
+# HELP go_memstats_last_gc_time_seconds Number of seconds since 1970 of last garbage collection.
+# TYPE go_memstats_last_gc_time_seconds gauge
+go_memstats_last_gc_time_seconds 1.7921790774944232e+09
+# HELP go_memstats_mallocs_total Total number of heap objects allocated, both live and gc-ed. Semantically a counter version for go_memstats_heap_objects gauge. Equals to /gc/heap/allocs:objects + /gc/heap/tiny/allocs:objects.
+# TYPE go_memstats_mallocs_total counter
+go_memstats_mallocs_total 6.0497433e+07
+# HELP go_memstats_mcache_inuse_bytes Number of bytes in use by mcache structures. Equals to /memory/classes/metadata/mcache/inuse:bytes.
+# TYPE go_memstats_mcache_inuse_bytes gauge
+go_memstats_mcache_inuse_bytes 4592
+# HELP go_memstats_mcache_sys_bytes Number of bytes used for mcache structures obtained from system. Equals to /memory/classes/metadata/mcache/inuse:bytes + /memory/classes/metadata/mcache/free:bytes.
+# TYPE go_memstats_mcache_sys_bytes gauge
+go_memstats_mcache_sys_bytes 16072
+# HELP go_memstats_mspan_inuse_bytes Number of bytes in use by mspan structures. Equals to /memory/classes/metadata/mspan/inuse:bytes.
+# TYPE go_memstats_mspan_inuse_bytes gauge
+go_memstats_mspan_inuse_bytes 82080
+# HELP go_memstats_mspan_sys_bytes Number of bytes used for mspan structures obtained from system. Equals to /memory/classes/metadata/mspan/inuse:bytes + /memory/classes/metadata/mspan/free:bytes.
+# TYPE go_memstats_mspan_sys_bytes gauge
+go_memstats_mspan_sys_bytes 228480
+# HELP go_memstats_next_gc_bytes Number of heap bytes when next garbage collection will take place. Equals to /gc/heap/goal:bytes.
+# TYPE go_memstats_next_gc_bytes gauge
+go_memstats_next_gc_bytes 5.313594e+06
+# HELP go_memstats_other_sys_bytes Number of bytes used for other system allocations. Equals to /memory/classes/other:bytes.
+# TYPE go_memstats_other_sys_bytes gauge
+go_memstats_other_sys_bytes 759554
+# HELP go_memstats_stack_inuse_bytes Number of bytes obtained from system for stack allocator in non-CGO environments. Equals to /memory/classes/heap/stacks:bytes.
+# TYPE go_memstats_stack_inuse_bytes gauge
+go_memstats_stack_inuse_bytes 1.048576e+06
+# HELP go_memstats_stack_sys_bytes Number of bytes obtained from system for stack allocator. Equals to /memory/classes/heap/stacks:bytes + /memory/classes/os-stacks:bytes.
+# TYPE go_memstats_stack_sys_bytes gauge
+go_memstats_stack_sys_bytes 1.048576e+06
+# HELP go_memstats_sys_bytes Number of bytes obtained from system. Equals to /memory/classes/total:byte.
+# TYPE go_memstats_sys_bytes gauge
+go_memstats_sys_bytes 2.6581256e+07
+# HELP go_sched_gomaxprocs_threads The current runtime.GOMAXPROCS setting, or the number of operating system threads that can execute user-level Go code simultaneously. Sourced from /sched/gomaxprocs:threads.
+# TYPE go_sched_gomaxprocs_threads gauge
+go_sched_gomaxprocs_threads 2
+# HELP go_threads Number of OS threads created.
+# TYPE go_threads gauge
+go_threads 7
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 60
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP process_network_receive_bytes_total Number of bytes received by the process over the network.
+# TYPE process_network_receive_bytes_total counter
+process_network_receive_bytes_total 5.20835862e+08
+# HELP process_network_transmit_bytes_total Number of bytes sent by the process over the network.
+# TYPE process_network_transmit_bytes_total counter
+process_network_transmit_bytes_total 5.36505156e+08
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 9
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.31424e+07
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.79217852424e+09
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.305817088e+09
+# HELP process_virtual_memory_max_bytes Maximum amount of virtual memory available in bytes.
+# TYPE process_virtual_memory_max_bytes gauge
+process_virtual_memory_max_bytes 1.8446744073709552e+19
+# HELP product_http_errors_total Completed HTTP requests with a non-2xx status, excluding scrapes.
+# TYPE product_http_errors_total counter
+product_http_errors_total{endpoint="/health",method="GET"} 0
+product_http_errors_total{endpoint="/products/:productId",method="GET"} 0
+product_http_errors_total{endpoint="/products/:productId/details",method="POST"} 0
+product_http_errors_total{endpoint="/v1/products/:productId",method="GET"} 18210
+product_http_errors_total{endpoint="/v1/products/:productId/details",method="POST"} 18313
+# HELP product_http_request_duration_seconds Gin request duration in seconds, excluding scrapes and pre-handler network/queue time.
+# TYPE product_http_request_duration_seconds histogram
+product_http_request_duration_seconds_bucket{endpoint="/health",method="GET",le="1e-05"} 0
+product_http_request_duration_seconds_bucket{endpoint="/health",method="GET",le="2.5e-05"} 0
+product_http_request_duration_seconds_bucket{endpoint="/health",method="GET",le="5e-05"} 0
+product_http_request_duration_seconds_bucket{endpoint="/health",method="GET",le="0.0001"} 1
+product_http_request_duration_seconds_bucket{endpoint="/health",method="GET",le="0.00025"} 1
+product_http_request_duration_seconds_bucket{endpoint="/health",method="GET",le="0.0005"} 1
+product_http_request_duration_seconds_bucket{endpoint="/health",method="GET",le="0.001"} 1
+product_http_request_duration_seconds_bucket{endpoint="/health",method="GET",le="0.0025"} 1
+product_http_request_duration_seconds_bucket{endpoint="/health",method="GET",le="0.005"} 1
+product_http_request_duration_seconds_bucket{endpoint="/health",method="GET",le="0.01"} 1
+product_http_request_duration_seconds_bucket{endpoint="/health",method="GET",le="0.025"} 1
+product_http_request_duration_seconds_bucket{endpoint="/health",method="GET",le="0.05"} 1
+product_http_request_duration_seconds_bucket{endpoint="/health",method="GET",le="0.1"} 1
+product_http_request_duration_seconds_bucket{endpoint="/health",method="GET",le="0.25"} 1
+product_http_request_duration_seconds_bucket{endpoint="/health",method="GET",le="0.5"} 1
+product_http_request_duration_seconds_bucket{endpoint="/health",method="GET",le="1"} 1
+product_http_request_duration_seconds_bucket{endpoint="/health",method="GET",le="2.5"} 1
+product_http_request_duration_seconds_bucket{endpoint="/health",method="GET",le="5"} 1
+product_http_request_duration_seconds_bucket{endpoint="/health",method="GET",le="10"} 1
+product_http_request_duration_seconds_bucket{endpoint="/health",method="GET",le="+Inf"} 1
+product_http_request_duration_seconds_sum{endpoint="/health",method="GET"} 6.05e-05
+product_http_request_duration_seconds_count{endpoint="/health",method="GET"} 1
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId",method="GET",le="1e-05"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId",method="GET",le="2.5e-05"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId",method="GET",le="5e-05"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId",method="GET",le="0.0001"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId",method="GET",le="0.00025"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId",method="GET",le="0.0005"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId",method="GET",le="0.001"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId",method="GET",le="0.0025"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId",method="GET",le="0.005"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId",method="GET",le="0.01"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId",method="GET",le="0.025"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId",method="GET",le="0.05"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId",method="GET",le="0.1"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId",method="GET",le="0.25"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId",method="GET",le="0.5"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId",method="GET",le="1"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId",method="GET",le="2.5"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId",method="GET",le="5"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId",method="GET",le="10"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId",method="GET",le="+Inf"} 0
+product_http_request_duration_seconds_sum{endpoint="/products/:productId",method="GET"} 0
+product_http_request_duration_seconds_count{endpoint="/products/:productId",method="GET"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId/details",method="POST",le="1e-05"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId/details",method="POST",le="2.5e-05"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId/details",method="POST",le="5e-05"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId/details",method="POST",le="0.0001"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId/details",method="POST",le="0.00025"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId/details",method="POST",le="0.0005"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId/details",method="POST",le="0.001"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId/details",method="POST",le="0.0025"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId/details",method="POST",le="0.005"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId/details",method="POST",le="0.01"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId/details",method="POST",le="0.025"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId/details",method="POST",le="0.05"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId/details",method="POST",le="0.1"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId/details",method="POST",le="0.25"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId/details",method="POST",le="0.5"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId/details",method="POST",le="1"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId/details",method="POST",le="2.5"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId/details",method="POST",le="5"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId/details",method="POST",le="10"} 0
+product_http_request_duration_seconds_bucket{endpoint="/products/:productId/details",method="POST",le="+Inf"} 0
+product_http_request_duration_seconds_sum{endpoint="/products/:productId/details",method="POST"} 0
+product_http_request_duration_seconds_count{endpoint="/products/:productId/details",method="POST"} 0
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId",method="GET",le="1e-05"} 1.453557e+06
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId",method="GET",le="2.5e-05"} 1.465169e+06
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId",method="GET",le="5e-05"} 1.46696e+06
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId",method="GET",le="0.0001"} 1.46745e+06
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId",method="GET",le="0.00025"} 1.46804e+06
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId",method="GET",le="0.0005"} 1.468498e+06
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId",method="GET",le="0.001"} 1.469248e+06
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId",method="GET",le="0.0025"} 1.470089e+06
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId",method="GET",le="0.005"} 1.4702e+06
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId",method="GET",le="0.01"} 1.4702e+06
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId",method="GET",le="0.025"} 1.4702e+06
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId",method="GET",le="0.05"} 1.470202e+06
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId",method="GET",le="0.1"} 1.470316e+06
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId",method="GET",le="0.25"} 1.470316e+06
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId",method="GET",le="0.5"} 1.470316e+06
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId",method="GET",le="1"} 1.470316e+06
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId",method="GET",le="2.5"} 1.470316e+06
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId",method="GET",le="5"} 1.470316e+06
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId",method="GET",le="10"} 1.470316e+06
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId",method="GET",le="+Inf"} 1.470316e+06
+product_http_request_duration_seconds_sum{endpoint="/v1/products/:productId",method="GET"} 13.345147598981134
+product_http_request_duration_seconds_count{endpoint="/v1/products/:productId",method="GET"} 1.470316e+06
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId/details",method="POST",le="1e-05"} 309770
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId/details",method="POST",le="2.5e-05"} 338390
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId/details",method="POST",le="5e-05"} 342861
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId/details",method="POST",le="0.0001"} 343859
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId/details",method="POST",le="0.00025"} 344162
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId/details",method="POST",le="0.0005"} 344313
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId/details",method="POST",le="0.001"} 344485
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId/details",method="POST",le="0.0025"} 344889
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId/details",method="POST",le="0.005"} 344999
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId/details",method="POST",le="0.01"} 344999
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId/details",method="POST",le="0.025"} 344999
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId/details",method="POST",le="0.05"} 345001
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId/details",method="POST",le="0.1"} 345076
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId/details",method="POST",le="0.25"} 345076
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId/details",method="POST",le="0.5"} 345076
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId/details",method="POST",le="1"} 345076
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId/details",method="POST",le="2.5"} 345076
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId/details",method="POST",le="5"} 345076
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId/details",method="POST",le="10"} 345076
+product_http_request_duration_seconds_bucket{endpoint="/v1/products/:productId/details",method="POST",le="+Inf"} 345076
+product_http_request_duration_seconds_sum{endpoint="/v1/products/:productId/details",method="POST"} 8.627877589001049
+product_http_request_duration_seconds_count{endpoint="/v1/products/:productId/details",method="POST"} 345076
+# HELP product_http_requests_total Completed HTTP requests, excluding Prometheus scrapes.
+# TYPE product_http_requests_total counter
+product_http_requests_total{endpoint="/health",method="GET",status="200"} 1
+product_http_requests_total{endpoint="/products/:productId",method="GET",status="200"} 0
+product_http_requests_total{endpoint="/products/:productId",method="GET",status="401"} 0
+product_http_requests_total{endpoint="/products/:productId",method="GET",status="404"} 0
+product_http_requests_total{endpoint="/products/:productId",method="GET",status="500"} 0
+product_http_requests_total{endpoint="/products/:productId/details",method="POST",status="204"} 0
+product_http_requests_total{endpoint="/products/:productId/details",method="POST",status="400"} 0
+product_http_requests_total{endpoint="/products/:productId/details",method="POST",status="401"} 0
+product_http_requests_total{endpoint="/products/:productId/details",method="POST",status="404"} 0
+product_http_requests_total{endpoint="/products/:productId/details",method="POST",status="500"} 0
+product_http_requests_total{endpoint="/v1/products/:productId",method="GET",status="200"} 1.452106e+06
+product_http_requests_total{endpoint="/v1/products/:productId",method="GET",status="401"} 1
+product_http_requests_total{endpoint="/v1/products/:productId",method="GET",status="404"} 18209
+product_http_requests_total{endpoint="/v1/products/:productId",method="GET",status="500"} 0
+product_http_requests_total{endpoint="/v1/products/:productId/details",method="POST",status="204"} 326763
+product_http_requests_total{endpoint="/v1/products/:productId/details",method="POST",status="400"} 18312
+product_http_requests_total{endpoint="/v1/products/:productId/details",method="POST",status="401"} 0
+product_http_requests_total{endpoint="/v1/products/:productId/details",method="POST",status="404"} 1
+product_http_requests_total{endpoint="/v1/products/:productId/details",method="POST",status="500"} 0

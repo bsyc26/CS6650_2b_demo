@@ -1,0 +1,13 @@
+aws_region          = "us-east-1"
+service_name        = "cs6650-hw5-product"
+ecr_repository_name = "cs6650-hw5-product"
+container_port      = 8080
+ecs_count           = 1
+task_cpu            = "256"
+task_memory         = "512"
+
+# Replace with the public IPv4 address /32 of the computer sending requests.
+allowed_cidrs = ["203.0.113.10/32"]
+
+# Application key: TF_VAR_product_api_key.
+# AWS credentials: standard AWS credential chain, never this file.

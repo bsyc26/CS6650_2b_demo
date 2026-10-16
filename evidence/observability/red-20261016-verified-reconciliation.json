@@ -1,0 +1,11 @@
+{
+  "requests": 802407,
+  "request_counter_and_logs_match": true,
+  "error_counter_delta": 15945.0,
+  "log_non_2xx": 15945,
+  "histogram_count_delta": 802407.0,
+  "histogram_sum_delta_seconds": 10.333105174983228,
+  "rounded_log_sum_seconds": 9.966457000002107,
+  "rounding_tolerance_seconds": 0.802407,
+  "all_checks_passed": true
+}

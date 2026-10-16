@@ -1,0 +1,15 @@
+{
+  "RUN_ID": "fast-50",
+  "USER_CLASS": "ProductFastHttpUser",
+  "USERS": "50",
+  "SPAWN_RATE": "10",
+  "RUN_TIME": "90s",
+  "WORKERS": "1",
+  "WAIT_MIN": "0.1",
+  "WAIT_MAX": "0.3",
+  "TARGET_URL": "http://54.85.20.64:8080",
+  "WEB_PORT": "8090",
+  "locust_version": "2.46.5",
+  "get_post_weight": "4:1",
+  "started_at_utc": "2026-10-16T18:48:23.292693+00:00"
+}

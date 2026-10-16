@@ -1,0 +1,2 @@
+Image=sha256:48f5d853925cfbef2e8a3b1f51bcfaaab6f01111a1be2b72f22babf2ea207426 OS=linux Architecture=arm64 User=65532 Size=26959532
+NanoCPUs=250000000 MemoryBytes=536870912 Readonly=true

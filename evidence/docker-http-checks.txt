@@ -1,0 +1,47 @@
+PASS GET  /products/12345                -> 200  existing product
+     {"product_id": 12345, "sku": "ABC-123-XYZ", "manufacturer": "Acme Corporation", "category_id": 456, "weight": 1250, "some_other_id": 789}
+PASS POST /products/12345/details        -> 204  successful update, empty response
+PASS GET  /products/12345                -> 200  read your write
+     {"product_id": 12345, "sku": "HW5-SMOKE-UPDATED", "manufacturer": "Local test maker", "category_id": 456, "weight": 0, "some_other_id": 789}
+PASS GET  /products/2147483647           -> 404  missing product
+     {"error": "PRODUCT_NOT_FOUND", "message": "Product not found"}
+PASS POST /products/12345/details        -> 400  invalid JSON
+     {"error": "INVALID_INPUT", "message": "Invalid input data", "details": "Body must be one JSON Product object with valid field types"}
+PASS POST /products/12345/details        -> 400  missing required product_id
+     {"error": "INVALID_INPUT", "message": "Invalid input data", "details": "all six Product fields are required and must not be null"}
+PASS POST /products/12345/details        -> 400  missing required sku
+     {"error": "INVALID_INPUT", "message": "Invalid input data", "details": "all six Product fields are required and must not be null"}
+PASS POST /products/12345/details        -> 400  missing required manufacturer
+     {"error": "INVALID_INPUT", "message": "Invalid input data", "details": "all six Product fields are required and must not be null"}
+PASS POST /products/12345/details        -> 400  missing required category_id
+     {"error": "INVALID_INPUT", "message": "Invalid input data", "details": "all six Product fields are required and must not be null"}
+PASS POST /products/12345/details        -> 400  missing required weight
+     {"error": "INVALID_INPUT", "message": "Invalid input data", "details": "all six Product fields are required and must not be null"}
+PASS POST /products/12345/details        -> 400  missing required some_other_id
+     {"error": "INVALID_INPUT", "message": "Invalid input data", "details": "all six Product fields are required and must not be null"}
+PASS POST /products/12345/details        -> 400  mismatched URL/body ID
+     {"error": "INVALID_INPUT", "message": "Invalid input data", "details": "product_id must match the productId in the URL"}
+PASS POST /products/12345/details        -> 400  negative weight
+     {"error": "INVALID_INPUT", "message": "Invalid input data", "details": "IDs must be positive int32 values and weight must be a nonnegative int32"}
+PASS POST /products/12345/details        -> 400  int32 overflow
+     {"error": "INVALID_INPUT", "message": "Invalid input data", "details": "Body must be one JSON Product object with valid field types"}
+PASS POST /products/12345/details        -> 400  SKU too long
+     {"error": "INVALID_INPUT", "message": "Invalid input data", "details": "sku must contain 1 to 100 characters"}
+PASS POST /products/12345/details        -> 400  duplicate SKU
+     {"error": "INVALID_INPUT", "message": "Invalid input data", "details": "sku is already used by another product"}
+PASS POST /products/2147483647/details   -> 404  unknown product cannot be created
+     {"error": "PRODUCT_NOT_FOUND", "message": "Product not found"}
+PASS GET  /products/0                    -> 404  invalid GET ID
+     {"error": "PRODUCT_NOT_FOUND", "message": "Product not found"}
+PASS POST /products/0/details            -> 400  invalid POST ID
+     {"error": "INVALID_INPUT", "message": "Invalid input data", "details": "productId must be an integer between 1 and 2147483647"}
+PASS GET  /products/12345                -> 401  authentication required
+     {"error": "UNAUTHORIZED", "message": "A valid API key or Bearer token is required"}
+PASS GET  /products/12345                -> 500  controlled recovery path
+     {"error": "INTERNAL_ERROR", "message": "Internal server error"}
+PASS POST /products/12345/details        -> 500  controlled recovery path
+     {"error": "INTERNAL_ERROR", "message": "Internal server error"}
+PASS GET  /products/12345                -> 200  server remains healthy after errors
+     {"product_id": 12345, "sku": "HW5-SMOKE-UPDATED", "manufacturer": "Local test maker", "category_id": 456, "weight": 0, "some_other_id": 789}
+PASS POST /products/12345/details        -> 204  restore original product
+All selected HTTP checks passed. All 7 declared Product response paths covered.

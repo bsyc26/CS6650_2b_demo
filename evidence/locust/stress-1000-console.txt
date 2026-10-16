@@ -1,0 +1,23 @@
+worker-3  | [2026-10-16 18:52:09,136] 9534096b8cab/INFO/locust.main: Starting Locust 2.46.5
+master-1  | [2026-10-16 18:52:08,901] 881cc197dc68/INFO/locust.main: Starting Locust 2.46.5
+master-1  | [2026-10-16 18:52:08,903] 881cc197dc68/INFO/locust.main: Starting web interface at http://0.0.0.0:8089, press enter to open your default browser.
+master-1  | [2026-10-16 18:52:08,977] 881cc197dc68/INFO/locust.runners: 14685d04a27a_b9a70e9393614340b5c121daba384a93 (index 0) reported as ready. 1 workers connected.
+master-1  | [2026-10-16 18:52:09,058] 881cc197dc68/INFO/locust.runners: c56649fbe2c6_4b06959448b147d1b26295939fb2e7ae (index 1) reported as ready. 2 workers connected.
+master-1  | [2026-10-16 18:52:09,141] 881cc197dc68/INFO/locust.runners: 9534096b8cab_15c8a8b4cc0548738211ed7c3c0ecc45 (index 2) reported as ready. 3 workers connected.
+master-1  | [2026-10-16 18:52:09,205] 881cc197dc68/INFO/locust.runners: 25e315c08037_0dc0fe20f9ea4921ab121b7d0dbfde2d (index 3) reported as ready. 4 workers connected.
+master-1  | [2026-10-16 18:52:09,918] 881cc197dc68/INFO/locust.main: Run time limit set to 90 seconds
+master-1  | [2026-10-16 18:52:09,919] 881cc197dc68/INFO/locust.runners: Sending spawn jobs of 1000 users at 100.00 spawn rate to 4 ready workers
+master-1  | [2026-10-16 18:52:18,984] 881cc197dc68/INFO/locust.runners: All users spawned: {"ProductFastHttpUser": 1000} (1000 total users)
+master-1  | [2026-10-16 18:53:39,919] 881cc197dc68/INFO/locust.main: --run-time limit reached, stopping test
+master-1  | [2026-10-16 18:53:39,952] 881cc197dc68/INFO/locust.runners: 14685d04a27a_b9a70e9393614340b5c121daba384a93 (index 0) reported that it has stopped
+master-1  | [2026-10-16 18:53:39,952] 881cc197dc68/INFO/locust.runners: 14685d04a27a_b9a70e9393614340b5c121daba384a93 (index 0) reported as ready. 4 workers connected.
+master-1  | [2026-10-16 18:53:39,952] 881cc197dc68/INFO/locust.runners: c56649fbe2c6_4b06959448b147d1b26295939fb2e7ae (index 1) reported that it has stopped
+master-1  | [2026-10-16 18:53:39,952] 881cc197dc68/INFO/locust.runners: c56649fbe2c6_4b06959448b147d1b26295939fb2e7ae (index 1) reported as ready. 4 workers connected.
+master-1  | [2026-10-16 18:53:39,952] 881cc197dc68/INFO/locust.runners: 25e315c08037_0dc0fe20f9ea4921ab121b7d0dbfde2d (index 3) reported that it has stopped
+master-1  | [2026-10-16 18:53:39,953] 881cc197dc68/INFO/locust.runners: 25e315c08037_0dc0fe20f9ea4921ab121b7d0dbfde2d (index 3) reported as ready. 4 workers connected.
+master-1  | [2026-10-16 18:53:39,953] 881cc197dc68/INFO/locust.runners: 9534096b8cab_15c8a8b4cc0548738211ed7c3c0ecc45 (index 2) reported that it has stopped
+master-1  | [2026-10-16 18:53:39,953] 881cc197dc68/INFO/locust.runners: 9534096b8cab_15c8a8b4cc0548738211ed7c3c0ecc45 (index 2) reported as ready. 4 workers connected.
+master-1  | [2026-10-16 18:53:40,923] 881cc197dc68/INFO/locust.main: --autoquit not specified, leaving web ui running indefinitely
+worker-1  | [2026-10-16 18:52:09,054] c56649fbe2c6/INFO/locust.main: Starting Locust 2.46.5
+worker-2  | [2026-10-16 18:52:09,202] 25e315c08037/INFO/locust.main: Starting Locust 2.46.5
+worker-4  | [2026-10-16 18:52:08,973] 14685d04a27a/INFO/locust.main: Starting Locust 2.46.5

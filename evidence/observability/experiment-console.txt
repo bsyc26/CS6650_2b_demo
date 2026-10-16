@@ -1,0 +1,23 @@
+red-20261016-local: idle phase started (90s)
+Idle verified: zero Product RPS and zero non-2xx ratio. Starting Locust.
+ Container hw5-observability-product-1 Running 
+ Container hw5-observability-locust-master-1 Creating 
+ Container hw5-observability-locust-master-1 Created 
+ Container hw5-observability-locust-worker-2 Creating 
+ Container hw5-observability-locust-worker-1 Creating 
+ Container hw5-observability-locust-worker-2 Created 
+ Container hw5-observability-locust-worker-1 Created 
+ Container hw5-observability-locust-master-1 Starting 
+ Container hw5-observability-locust-master-1 Started 
+ Container hw5-observability-locust-worker-1 Starting 
+ Container hw5-observability-locust-worker-1 Started 
+ Container hw5-observability-locust-worker-2 Starting 
+ Container hw5-observability-locust-worker-2 Started 
+Locust: http://127.0.0.1:18089 (automatically stops load after the configured duration)
+Locust load ended. Waiting for final scrapes and worker reports.
+Traceback (most recent call last):
+  File "/Users/benny/Code/neu/ds_cs6650/hw5/scripts/capture_observability.py", line 195, in <module>
+    "percentile_method": "nearest-rank from rounded JSON duration_ms; dashboard uses histogram estimates",
+  File "/Users/benny/Code/neu/ds_cs6650/hw5/scripts/capture_observability.py", line 167, in main
+    durations = []
+RuntimeError: Log/counter mismatch: logs=Counter({'GET /v1/products/:productId 200': 176910, 'POST /v1/products/:productId/details 204': 39624, 'POST /v1/products/:productId/details 400': 2293, 'GET /v1/products/:productId 404': 2225}), counters=Counter({'GET /v1/products/:productId 200': 810132, 'POST /v1/products/:productId/details 204': 182271, 'POST /v1/products/:productId/details 400': 10349, 'GET /v1/products/:productId 404': 10212}); preserve raw log /private/tmp/hw5-red-20261016-local-product.jsonl

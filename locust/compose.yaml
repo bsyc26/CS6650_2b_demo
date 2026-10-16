@@ -1,0 +1,48 @@
+services:
+  master:
+    image: locustio/locust:2.46.5
+    env_file: ../.env.aws
+    environment:
+      WAIT_MIN: "${WAIT_MIN:-0.1}"
+      WAIT_MAX: "${WAIT_MAX:-0.3}"
+    ports:
+      - "127.0.0.1:${WEB_PORT:-8089}:8089"
+    volumes:
+      - ./:/mnt/locust:ro
+      - ../evidence/locust:/results
+    command:
+      - -f
+      - /mnt/locust/locustfile.py
+      - "${USER_CLASS:-ProductHttpUser}"
+      - --master
+      - --host
+      - "${TARGET_URL:?Set TARGET_URL to your Product API origin without /v1}"
+      - --autostart
+      - --expect-workers
+      - "${WORKERS:-1}"
+      - --users
+      - "${USERS:-50}"
+      - --spawn-rate
+      - "${SPAWN_RATE:-10}"
+      - --run-time
+      - "${RUN_TIME:-90s}"
+      - --csv
+      - "/results/${RUN_ID:-http-50}"
+      - --csv-full-history
+  worker:
+    image: locustio/locust:2.46.5
+    env_file: ../.env.aws
+    environment:
+      WAIT_MIN: "${WAIT_MIN:-0.1}"
+      WAIT_MAX: "${WAIT_MAX:-0.3}"
+    volumes:
+      - ./:/mnt/locust:ro
+    command:
+      - -f
+      - /mnt/locust/locustfile.py
+      - "${USER_CLASS:-ProductHttpUser}"
+      - --worker
+      - --master-host
+      - master
+    depends_on:
+      - master

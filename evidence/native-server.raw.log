@@ -1,0 +1,26 @@
+{"time":"2026-10-15T22:50:59.143372-07:00","level":"INFO","msg":"listening","address":":18085","test_faults":true}
+{"time":"2026-10-15T22:51:10.6344-07:00","level":"INFO","msg":"request","method":"GET","endpoint":"/v1/products/:productId","status":200,"duration_ms":0.255}
+{"time":"2026-10-15T22:51:10.644734-07:00","level":"INFO","msg":"request","method":"POST","endpoint":"/v1/products/:productId/details","status":204,"duration_ms":0.065}
+{"time":"2026-10-15T22:51:10.654139-07:00","level":"INFO","msg":"request","method":"GET","endpoint":"/v1/products/:productId","status":200,"duration_ms":0.064}
+{"time":"2026-10-15T22:51:10.663753-07:00","level":"INFO","msg":"request","method":"GET","endpoint":"/v1/products/:productId","status":404,"duration_ms":0.068}
+{"time":"2026-10-15T22:51:10.673282-07:00","level":"INFO","msg":"request","method":"POST","endpoint":"/v1/products/:productId/details","status":400,"duration_ms":0.044}
+{"time":"2026-10-15T22:51:10.682774-07:00","level":"INFO","msg":"request","method":"POST","endpoint":"/v1/products/:productId/details","status":400,"duration_ms":0.034}
+{"time":"2026-10-15T22:51:10.692067-07:00","level":"INFO","msg":"request","method":"POST","endpoint":"/v1/products/:productId/details","status":400,"duration_ms":0.054}
+{"time":"2026-10-15T22:51:10.701531-07:00","level":"INFO","msg":"request","method":"POST","endpoint":"/v1/products/:productId/details","status":400,"duration_ms":0.024}
+{"time":"2026-10-15T22:51:10.710153-07:00","level":"INFO","msg":"request","method":"POST","endpoint":"/v1/products/:productId/details","status":400,"duration_ms":0.02}
+{"time":"2026-10-15T22:51:10.719159-07:00","level":"INFO","msg":"request","method":"POST","endpoint":"/v1/products/:productId/details","status":400,"duration_ms":0.028}
+{"time":"2026-10-15T22:51:10.727984-07:00","level":"INFO","msg":"request","method":"POST","endpoint":"/v1/products/:productId/details","status":400,"duration_ms":0.025}
+{"time":"2026-10-15T22:51:10.737002-07:00","level":"INFO","msg":"request","method":"POST","endpoint":"/v1/products/:productId/details","status":400,"duration_ms":0.042}
+{"time":"2026-10-15T22:51:10.746379-07:00","level":"INFO","msg":"request","method":"POST","endpoint":"/v1/products/:productId/details","status":400,"duration_ms":0.021}
+{"time":"2026-10-15T22:51:10.756023-07:00","level":"INFO","msg":"request","method":"POST","endpoint":"/v1/products/:productId/details","status":400,"duration_ms":0.022}
+{"time":"2026-10-15T22:51:10.765081-07:00","level":"INFO","msg":"request","method":"POST","endpoint":"/v1/products/:productId/details","status":400,"duration_ms":0.021}
+{"time":"2026-10-15T22:51:10.774309-07:00","level":"INFO","msg":"request","method":"POST","endpoint":"/v1/products/:productId/details","status":400,"duration_ms":0.025}
+{"time":"2026-10-15T22:51:10.783526-07:00","level":"INFO","msg":"request","method":"POST","endpoint":"/v1/products/:productId/details","status":404,"duration_ms":0.022}
+{"time":"2026-10-15T22:51:10.792473-07:00","level":"INFO","msg":"request","method":"GET","endpoint":"/v1/products/:productId","status":404,"duration_ms":0.01}
+{"time":"2026-10-15T22:51:10.80155-07:00","level":"INFO","msg":"request","method":"POST","endpoint":"/v1/products/:productId/details","status":400,"duration_ms":0.012}
+{"time":"2026-10-15T22:51:10.810464-07:00","level":"INFO","msg":"request","method":"GET","endpoint":"/v1/products/:productId","status":401,"duration_ms":0.014}
+{"time":"2026-10-15T22:51:10.819412-07:00","level":"INFO","msg":"request","method":"GET","endpoint":"/v1/products/:productId","status":500,"duration_ms":0.039}
+{"time":"2026-10-15T22:51:10.828274-07:00","level":"INFO","msg":"request","method":"POST","endpoint":"/v1/products/:productId/details","status":500,"duration_ms":0.017}
+{"time":"2026-10-15T22:51:10.837424-07:00","level":"INFO","msg":"request","method":"GET","endpoint":"/v1/products/:productId","status":200,"duration_ms":0.019}
+{"time":"2026-10-15T22:51:10.846868-07:00","level":"INFO","msg":"request","method":"POST","endpoint":"/v1/products/:productId/details","status":204,"duration_ms":0.023}
+signal: terminated
